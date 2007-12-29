@@ -40,3 +40,18 @@ class/interface 注释，public与protected注释 还有 Event标签注释， �
 [http://gceclub.sun.com.cn/Java_Docs/jdk6/html/zh_CN/api/index.html]
 
 由于AsWing模仿的Swing框架，所以会有很多地方的用法几乎一样，所以文档也会有很多相同点，有时候可以直接借用Swing文档来加快速度，哈哈。但是毕竟两者也有很大的不同，所以当你决定要直接复制一段Swing文档到AsWing中的时候，一定要保证这段内容在Swing和AsWing之间没有任何偏差，并注意上面的几点。
+
+
+
+
+----------------------------- 已经开始参与翻译的朋友 ----------------
+
+Jeff
+  我的一个好友兼同学，对aswing比较熟悉，所以先开始了。
+  翻译项目 6 Buttons + Menus
+
+harry
+  我准备先搞布局那部分，相信很多aswing初学者会比较早的接触布局的。
+  翻译项目 10 Icons + Layouts
+
+cjmxp
