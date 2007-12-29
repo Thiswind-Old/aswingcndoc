@@ -1,3 +1,4 @@
+#labels Featured
 #翻译过程中的注意事项
 
 
@@ -55,3 +56,6 @@ harry
   翻译项目 10 Icons + Layouts
 
 cjmxp
+
+龙城flash
+  审核翻译内容
