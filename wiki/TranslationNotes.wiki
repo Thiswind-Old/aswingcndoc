@@ -44,7 +44,7 @@ class/interface 注释，public与protected注释 还有 Event标签注释， �
 
 
 
-
+翻译项目分配见 [http://code.google.com/p/aswingcndoc/wiki/Distribution]
 _----------------------------- 已经开始参与翻译的朋友 ----------------_
 
 [http://blog.jeffxu.cn Jeff]
