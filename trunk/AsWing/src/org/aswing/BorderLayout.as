@@ -11,19 +11,20 @@ import org.aswing.Insets;
 import org.aswing.geom.IntRectangle;
 
 /**
- * BorderLayout排列并缩放一个容器内的组件以适应5个区域：
- * 北，南，东，西，和中间
- * 每个区域只能容纳一个组件，并且指定一个对应的常量
+ * 这是一个布置容器的边框布局，它可以对容器组件进行安排，并调整其大小，
+ * 使其符合下列五个区域：
+ * 北、南、东、西、中。
+ * 每个区域最多只能包含一个组件，并通过相应的常量进行标识：
  * <code>NORTH</code>, <code>SOUTH</code>, <code>EAST</code>,
- * <code>WEST</code>, and <code>CENTER</code>.
- * 往一个使用BorderLayout的容器中添加组件时，使用这5个常量  
+ * <code>WEST</code>, 和 <code>CENTER</code>.
+ * 当使用边框布局将一个组件添加到容器中时，要使用这五个常量之一，例如：
  * 例如：
  * <pre>
  *    var p:JPanel = new JPanel();
  *    p.setLayout(new BorderLayout());
  *    p.append(new JButton("Okay"), BorderLayout.SOUTH);
  * </pre>
- * 为了方便起见，<code>BorderLayout</code>默认使用<code>CENTER</code>常量
+ * 为了方便起见，<code>BorderLayout</code> 将缺少字符串说明的情况解释为常量 <code>CENTER</code>：
  * <pre>
  *    var p2:JPanel = new JPanel();
  *    p2.setLayout(new BorderLayout());
@@ -35,6 +36,7 @@ import org.aswing.geom.IntRectangle;
  * <br></br>
  * <img src="../../aswingImg/BorderLayout.JPG" ></img>
  * </p>
+ * @see http://gceclub.sun.com.cn/Java_Docs/jdk6/html/zh_CN/api/java/awt/BorderLayout.html
  * @author iiley
  */
  
@@ -64,27 +66,27 @@ public class BorderLayout extends EmptyLayout{
 	private var defaultConstraints:String;
 
     /**
-     * 适应北面布局（容器的顶部）。
+     * 北区域的布局约束（容器顶部）。
      */
     public static const NORTH:String  = "North";
 
     /**
-     * 适应南面布局 （容器的底部）。
+     * 南区域的布局约束（容器底部）。
      */
     public static const SOUTH:String  = "South";
 
     /**
-     * 适应东面布局 （容器的右边）。
+     * 东区域的布局约束（容器右边）。
      */
     public static const EAST :String  = "East";
 
     /**
-     * 适应西面布局 （容器的左边）。
+     * 西区域的布局约束（容器左边）。
      */
     public static const WEST :String  = "West";
 
     /**
-     * 适应中间布局约束 （容器的中间）
+     * 中间区域的布局约束（容器中央）。
      */
     public static const CENTER:String  = "Center";
 
@@ -113,11 +115,11 @@ public class BorderLayout extends EmptyLayout{
     public static const LINE_END:String  = AFTER_LINE_ENDS;
 
     /**
-     * 构造一个BorderLayout并指定组件之间的间隔
-     * <code>hgap</code>指定横向间隔
-     * <code>vgap</code>指定纵向间隔。
-     * @param   hgap   横向间隔。
-     * @param   vgap   纵向间隔。
+     * 构造一个具有指定组件间距的边框布局。
+     * 水平间距由 <code>hgap</code> 指定，
+     * 垂直间距由 <code>vgap</code> 指定。
+     * @param   hgap   水平间距。
+     * @param   vgap   垂直间距。
      */
     public function BorderLayout(hgap:int = 0, vgap:int = 0) {
 		this.hgap = hgap;
@@ -131,24 +133,30 @@ public class BorderLayout extends EmptyLayout{
 	public function setDefaultConstraints(constraints:Object):void {
 		defaultConstraints = constraints.toString();
 	}
-
+	
+	/**
+	 * 返回组件之间的水平间距。
+	 */ 
     public function getHgap():int {
 		return hgap;
     }
 	
 	/**
-	 * 设定横向间隔
+	 * 设置组件之间的水平间距。
 	 */
     public function setHgap(hgap:int):void {
 		this.hgap = hgap;
     }
-
+	
+	/**
+	 * 返回组件之间的垂直间距。
+	 */ 
     public function getVgap():int {
 		return vgap;
     }
 	
 	/**
-	 *  设定纵向间隔
+	 *  设置组件之间的垂直间距。
 	 */
     public function setVgap(vgap:int):void {
 		this.vgap = vgap;
@@ -279,23 +287,17 @@ public class BorderLayout extends EmptyLayout{
 
     /**
      * <p>
-     * 布置指定容器。
+     * 使用此边框布局对容器参数进行布局。
      * </p>
      * <p>
-     * //TODO 翻译（暂未理解）
-     * This method actually reshapes the components in the specified
-     * container in order to satisfy the constraints of this
-     * <code>BorderLayout</code> object. The <code>NORTH</code>
-     * and <code>SOUTH</code> components, if any, are placed at
-     * the top and bottom of the container, respectively. The
-     * <code>WEST</code> and <code>EAST</code> components are
-     * then placed on the left and right, respectively. Finally,
-     * the <code>CENTER</code> object is placed in any remaining
-     * space in the middle.
+     * 为了满足此 <code>BorderLayout</code> 对象的约束条件，
+     * 此方法实际上会重塑指定容器中的组件。
+     * <code>NORTH</code> 和 <code>SOUTH</code> 组件（如果有）分别放置在容器的顶部和底部。
+     * <code>WEST</code> 和 <code>EAST</code> 组件分别放置在容器的左边和右边。
+     * 最后，<code>CENTER</code> 对象放置在中间的任何剩余空间内。
      * </p>
      * <p>
-     * 大部分应用程序不需要直接调用该方法。该方法在容器执行其<code>doLayout</code>
-     * 方法时被调用。
+     * 大多数应用程序并不直接调用此方法。容器调用其 doLayout 方法时将调用此方法。
      * </p>
      * @param   target   要布置的容器。
      * @see     Container
@@ -340,10 +342,9 @@ public class BorderLayout extends EmptyLayout{
     }
 
     /**
-     * 根据适应区域获取组件
+     * 返回给定约束位置对应的组件。
      *
-     * @param   key     需要的绝对位置
-     *                  也就是 NORTH, SOUTH, EAST, 或 WEST。
+     * @param   key     所需的绝对位置，CENTER、NORTH、SOUTH、EAST 和 WEST 之一。
      * @param   ltr     Is the component line direction left-to-right?
      * 					该组件方向是否从左向右？ //TODO 未理解...
      */
