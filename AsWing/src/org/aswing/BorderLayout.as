@@ -11,31 +11,27 @@ import org.aswing.Insets;
 import org.aswing.geom.IntRectangle;
 
 /**
- * A border layout lays out a container, arranging and resizing
- * its components to fit in five regions:
- * north, south, east, west, and center.
- * Each region may contain no more than one component, and 
- * is identified by a corresponding constant:
+ * BorderLayout排列并缩放一个容器内的组件以适应5个区域：
+ * 北，南，东，西，和中间
+ * 每个区域只能容纳一个组件，并且指定一个对应的常量
  * <code>NORTH</code>, <code>SOUTH</code>, <code>EAST</code>,
- * <code>WEST</code>, and <code>CENTER</code>.  When adding a
- * component to a container with a border layout, use one of these
- * five constants, for example:
+ * <code>WEST</code>, and <code>CENTER</code>.
+ * 往一个使用BorderLayout的容器中添加组件时，使用这5个常量  
+ * 例如：
  * <pre>
- *    Panel p = new Panel();
+ *    var p:JPanel = new JPanel();
  *    p.setLayout(new BorderLayout());
- *    p.add(new Button("Okay"), BorderLayout.SOUTH);
+ *    p.append(new JButton("Okay"), BorderLayout.SOUTH);
  * </pre>
- * For convenience, <code>BorderLayout</code> interprets the
- * absence of a string specification the same as the constant
- * <code>CENTER</code>:
+ * 为了方便起见，<code>BorderLayout</code>默认使用<code>CENTER</code>常量
  * <pre>
- *    Panel p2 = new Panel();
+ *    var p2:JPanel = new JPanel();
  *    p2.setLayout(new BorderLayout());
- *    p2.add(new TextArea());  // Same as p.add(new TextArea(), BorderLayout.CENTER);
+ *    p2.append(new TextArea());  //与 p.append(new JTextArea(), BorderLayout.CENTER);相同
  * </pre>
  * 
  * <p>
- * The following image illustrate the way the borderLayout layout child component.
+ * 下面的图片描述了BorderLayout排列子组件的方式
  * <br></br>
  * <img src="../../aswingImg/BorderLayout.JPG" ></img>
  * </p>
@@ -68,27 +64,27 @@ public class BorderLayout extends EmptyLayout{
 	private var defaultConstraints:String;
 
     /**
-     * The north layout constraint (top of container).
+     * 适应北面布局（容器的顶部）。
      */
     public static const NORTH:String  = "North";
 
     /**
-     * The south layout constraint (bottom of container).
+     * 适应南面布局 （容器的底部）。
      */
     public static const SOUTH:String  = "South";
 
     /**
-     * The east layout constraint (right side of container).
+     * 适应东面布局 （容器的右边）。
      */
     public static const EAST :String  = "East";
 
     /**
-     * The west layout constraint (left side of container).
+     * 适应西面布局 （容器的左边）。
      */
     public static const WEST :String  = "West";
 
     /**
-     * The center layout constraint (middle of container).
+     * 适应中间布局约束 （容器的中间）
      */
     public static const CENTER:String  = "Center";
 
@@ -117,12 +113,11 @@ public class BorderLayout extends EmptyLayout{
     public static const LINE_END:String  = AFTER_LINE_ENDS;
 
     /**
-     * Constructs a border layout with the specified gaps
-     * between components.
-     * The horizontal gap is specified by <code>hgap</code>
-     * and the vertical gap is specified by <code>vgap</code>.
-     * @param   hgap   the horizontal gap.
-     * @param   vgap   the vertical gap.
+     * 构造一个BorderLayout并指定组件之间的间隔
+     * <code>hgap</code>指定横向间隔
+     * <code>vgap</code>指定纵向间隔。
+     * @param   hgap   横向间隔。
+     * @param   vgap   纵向间隔。
      */
     public function BorderLayout(hgap:int = 0, vgap:int = 0) {
 		this.hgap = hgap;
@@ -142,7 +137,7 @@ public class BorderLayout extends EmptyLayout{
     }
 	
 	/**
-	 * Set horizontal gap
+	 * 设定横向间隔
 	 */
     public function setHgap(hgap:int):void {
 		this.hgap = hgap;
@@ -153,7 +148,7 @@ public class BorderLayout extends EmptyLayout{
     }
 	
 	/**
-	 *  Set vertical gap
+	 *  设定纵向间隔
 	 */
     public function setVgap(vgap:int):void {
 		this.vgap = vgap;
@@ -284,9 +279,10 @@ public class BorderLayout extends EmptyLayout{
 
     /**
      * <p>
-     * Lays out the container argument using this border layout.
+     * 布置指定容器。
      * </p>
      * <p>
+     * //TODO 翻译（暂未理解）
      * This method actually reshapes the components in the specified
      * container in order to satisfy the constraints of this
      * <code>BorderLayout</code> object. The <code>NORTH</code>
@@ -298,10 +294,10 @@ public class BorderLayout extends EmptyLayout{
      * space in the middle.
      * </p>
      * <p>
-     * Most applications do not call this method directly. This method
-     * is called when a container calls its <code>doLayout</code> method.
+     * 大部分应用程序不需要直接调用该方法。该方法在容器执行其<code>doLayout</code>
+     * 方法时被调用。
      * </p>
-     * @param   target   the container in which to do the layout.
+     * @param   target   要布置的容器。
      * @see     Container
      * @see     Container#doLayout()
      */
@@ -344,11 +340,12 @@ public class BorderLayout extends EmptyLayout{
     }
 
     /**
-     * Get the component that corresponds to the given constraint location
+     * 根据适应区域获取组件
      *
-     * @param   key     The desired absolute position,
-     *                  either NORTH, SOUTH, EAST, or WEST.
+     * @param   key     需要的绝对位置
+     *                  也就是 NORTH, SOUTH, EAST, 或 WEST。
      * @param   ltr     Is the component line direction left-to-right?
+     * 					该组件方向是否从左向右？ //TODO 未理解...
      */
     private function getChild(key:String, ltr:Boolean):Component {
         var result:Component = null;
