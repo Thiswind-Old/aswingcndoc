@@ -8,8 +8,7 @@ package org.aswing
 import org.aswing.geom.IntDimension;	
 	
 /** 
- * Defines an interface for classes that know how to layout Containers
- * based on a layout constraints object.
+ * 为约器基于的布局约束对象所属的类定义接口。
  *
  * @see Component
  * @see Container
@@ -19,71 +18,60 @@ import org.aswing.geom.IntDimension;
 public interface LayoutManager
 {
     /**
-     * Adds the specified component to the layout, using the specified
-     * constraint object.
-     * @param comp the component to be added
-     * @param constraints  where/how the component is added to the layout.
+     * 添加指定组件到布局中，并指定约束对象。
+     * @param comp 要被添加的组件
+     * @param constraints  组件被添加到布局中的 位置/方式
      */
     function addLayoutComponent(comp:Component, constraints:Object):void;
 
     /**
-     * Removes the specified component from the layout.
-     * @param comp the component to be removed
+     * 从布局中删除指定的组件。
+     * @param comp 要被删除的组件
      */
     function removeLayoutComponent(comp:Component):void;
 
     /**
-     * Calculates the preferred size dimensions for the specified 
-     * container, given the components it contains.
-     * @param target the container to be laid out
+     * 为指定的容器计算容纳组件的最佳尺寸。
+     * @param target 要布置的容器
      *  
      * @see #minimumLayoutSize
      */
     function preferredLayoutSize(target:Container):IntDimension;
 
     /** 
-     * Calculates the minimum size dimensions for the specified 
-     * container, given the components it contains.
-     * @param target the component to be laid out
+     * 为指定的容器计算容纳组件的最小尺寸。
+     * @param target 要布置的容器
      * @see #preferredLayoutSize
      */
     function minimumLayoutSize(target:Container):IntDimension;
 
     /** 
-     * Calculates the maximum size dimensions for the specified container,
-     * given the components it contains.
-     * @param target the component to be laid out
+     * 为指定的容器计算容纳组件的最大尺寸。
+     * @param target  要布置的容器
      * @see #preferredLayoutSize
      */
     function maximumLayoutSize(target:Container):IntDimension;
     
     /** 
-     * Lays out the specified container.
-     * @param target the container to be laid out 
+     * 布置指定容器。
+     * @param target 要布置的容器
      */
     function layoutContainer(target:Container):void;
 
     /**
-     * Returns the alignment along the x axis.  This specifies how
-     * the component would like to be aligned relative to other 
-     * components.  The value should be a number between 0 and 1
-     * where 0 represents alignment along the origin, 1 is aligned
-     * the furthest away from the origin, 0.5 is centered, etc.
+     * 返回沿 X 轴的对齐方式。它指定如何相对于其他组件对齐该组件。
+     * 值应该是一个介于 0 和 1 之间的数，其中 0 表示顶部对齐，1 表示底部对齐，0.5 表示居中对齐等。 
      */
     function getLayoutAlignmentX(target:Container):Number;
 
     /**
-     * Returns the alignment along the y axis.  This specifies how
-     * the component would like to be aligned relative to other 
-     * components.  The value should be a number between 0 and 1
-     * where 0 represents alignment along the origin, 1 is aligned
-     * the furthest away from the origin, 0.5 is centered, etc.
+     * 返回沿 X 轴的对齐方式。它指定如何相对于其他组件对齐该组件。
+     * 值应该是一个介于 0 和 1 之间的数，其中 0 表示顶部对齐，1 表示底部对齐，0.5 表示居中对齐等。 
      */
     function getLayoutAlignmentY(target:Container):Number;
 
     /**
-     * Invalidates the layout, indicating that if the layout manager
-     * has cached information it should be discarded.
+     * 使布局失效，指示如果布局管理器缓存了信息，则应该将其丢弃。 
      */
     function invalidateLayout(target:Container):void;
 }
