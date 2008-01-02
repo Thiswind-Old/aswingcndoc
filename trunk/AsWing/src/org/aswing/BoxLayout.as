@@ -12,38 +12,38 @@ import org.aswing.Insets;
 
 
 /**
- * A layout manager that allows multiple components to be arranged either vertically or 
- * horizontally. The components will not be wrapped. The width, height, preferredWidth,preferredHeight doesn't affect the way 
- * this layout manager layout the components. Note, it does  not work the same way as Java swing boxlayout does.
+ * 允许垂直或水平布置多个组件的布局管理器。这些组件将不包装。组件的宽度，高度，最佳宽度，最佳高度都不会
+ * 影响该布局管理器布置组件的方式。注意，该布局管理器的工作方式并不和Java swing的boxlayout相同。
  * <p>
- * If this boxlayout is set to X_AXIS, it will layout the child componnets evenly regardless the value of width,height,preferredWidth,preferredHeight.
- * The height of the child components is the same as the parent container.
- * The following picture illustrate this:
+ * 如果boxlayout被设置为X_AXIS，无论其内部组件的高度，最佳高度，最佳宽度为多少，它都将平均分配子组件的宽度。
+ * 所有子组件的高度都与他们的父容器相同。
+ * 以下图片说明这一点：
  * <img src="../../aswingImg/BoxLayout_X_AXIS.JPG" ></img>
  * </p>
  * <br/>
  * <br/>
  * <p>
- * It works the same way when it is set to Y_AXIS. 
+ * 设置成Y_AXIS后的工作方式也相同。
  * </p>
  * <br>
- * Note that this layout will first subtract all of the gaps before it evenly layout the components.
- * If you have a container that is 100 pixel in width with 5 child components, the layout manager is boxlayout, and set to X_AXIS, the gap is 20.
- * You would not see any child componnet in visual. 
- * Because the layout mananager will first subtract 20(gap)*5(component) =100 pixels from the visual area. Then, each component's width would be 0.
- * Pay attention to this when you use this layout manager.
+ * 
+ * 注意该布局将会先减去所有的间隔然后在平均布置所有组件。
+ * 如果你有一个100像素的容器，其内部有5个组件，容器的布局管理器为boxlayout，并且设置为X_AXIS，间距为20。
+ * 你将看不到任何一个组件。
+ * 因为布局管理器会先从可视区域减去 20(间距)*5(个组件) = 100像素 的空白。所以，每个组件的宽度将为0。
+ * 当你使用该布局管理器的时候需要注意这点。
  * </br>
  * @author iiley
  */
 public class BoxLayout extends EmptyLayout
 {
 	/**
-     * Specifies that components should be laid out left to right.
+	 * 指定组件应该从左到右放置。
      */
     public static const X_AXIS:int = 0;
     
     /**
-     * Specifies that components should be laid out top to bottom.
+     * 指定组件应该从上到下放置。
      */
     public static const Y_AXIS:int = 1;
     
@@ -52,8 +52,8 @@ public class BoxLayout extends EmptyLayout
     private var gap:int;
     
     /**
-     * @param axis (optional)the layout axis, default is X_AXIS
-     * @param gap  (optional)the gap between children, default is 0
+     * @param axis (可选)布置组件时使用的轴，默认为 X_AXIS。
+     * @param gap  (可选)子组件之间的间距，默认为0。
      * 
      * @see #X_AXIS
      * @see #X_AXIS
@@ -64,32 +64,32 @@ public class BoxLayout extends EmptyLayout
     }
     
     /**
-     * Sets new axis.
-     * @param axis new axis default is X_AXIS
+     * 设置新的用于布局组件的轴。
+     * @param axis 新的轴，默认为 X_AXIS
      */
     public function setAxis(axis:int=X_AXIS):void {
     	this.axis = axis;
     }
     
     /**
-     * Gets axis.
-     * @return axis
+     * 返回用于布局组件的轴。
+     * @return 用于布局组件的轴
      */
     public function getAxis():int {
     	return axis;	
     }
     
     /**
-     * Sets new gap.
-     * @param get new gap
+     * 设置新的间距。
+     * @param gap 新的间距
      */	
     public function setGap(gap:int=0):void {
     	this.gap = gap
     }
     
     /**
-     * Gets gap.
-     * @return gap
+     * 返回间距。
+     * @return 间距。
      */
     public function getGap():int {
     	return gap;	
