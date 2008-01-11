@@ -15,83 +15,84 @@ import org.aswing.util.*;
 import flash.display.SimpleButton;
 	
 /**
- * Dispatched when the button's model take action, generally when user click the 
- * button or <code>doClick()</code> method is called.
+ * 当按钮模型执行动作时分发该事件，通常情况下是由用户点击按钮或者调用 <code>doClick()</code> 方法。
  * @eventType org.aswing.event.AWEvent.ACT
  * @see org.aswing.AbstractButton#addActionListener()
  */
 [Event(name="act", type="org.aswing.event.AWEvent")]
 
 /**
- * Dispatched when the button's state changed. the state is all about:
+ * 当按钮的状态发生改变时分发该事件，有以下这些状态：
  * <ul>
- * <li>enabled</li>
- * <li>rollOver</li>
- * <li>pressed</li>
- * <li>released</li>
- * <li>selected</li>
+ * <li>可用</li>
+ * <li>鼠标经过</li>
+ * <li>鼠标按下</li>
+ * <li>鼠标释放</li>
+ * <li>被选中</li>
  * </ul>
  * </p>
  * <p>
- * Buttons always fire <code>programmatic=false</code> InteractiveEvent.
+ * 按钮总是触发 <code>programmatic=false</code> InteractiveEvent.
  * </p>
  * @eventType org.aswing.event.InteractiveEvent.STATE_CHANGED
  */
 [Event(name="stateChanged", type="org.aswing.event.InteractiveEvent")]
 	
 /**
- *  Dispatched when the button's selection changed.
+ *  按钮的选择状态被改变时触发该事件。
  * <p>
- * Buttons always fire <code>programmatic=false</code> InteractiveEvent.
+ * 按钮总是触发 <code>programmatic=false</code> InteractiveEvent.
  * </p>
  *  @eventType org.aswing.event.InteractiveEvent.SELECTION_CHANGED
  */
 [Event(name="selectionChanged", type="org.aswing.event.InteractiveEvent")]
 
 /**
- * Defines common behaviors for buttons and menu items.
+ * 定义按钮和菜单项的通用行为。
  * @author iiley
  */
 public class AbstractButton extends Component{
 	
 	/**
-	 * A fast access to AsWingConstants Constant
+	 * 一种快速访问AsWingConstants中CENTER常量的方式
 	 * @see org.aswing.AsWingConstants
 	 */
 	public static const CENTER:int  = AsWingConstants.CENTER;
 	/**
-	 * A fast access to AsWingConstants Constant
+	 * 一种快速访问AsWingConstants中TOP常量的方式
 	 * @see org.aswing.AsWingConstants
 	 */
 	public static const TOP:int     = AsWingConstants.TOP;
 	/**
-	 * A fast access to AsWingConstants Constant
+	 * 一种快速访问AsWingConstants中LEFT常量的方式
 	 * @see org.aswing.AsWingConstants
 	 */
     public static const LEFT:int    = AsWingConstants.LEFT;
 	/**
-	 * A fast access to AsWingConstants Constant
+	 * 一种快速访问AsWingConstants中BOTTOM常量的方式
 	 * @see org.aswing.AsWingConstants
 	 */
     public static const BOTTOM:int  = AsWingConstants.BOTTOM;
  	/**
-	 * A fast access to AsWingConstants Constant
+	 * 一种快速访问AsWingConstants中RIGHT常量的方式
 	 * @see org.aswing.AsWingConstants
 	 */
     public static const RIGHT:int   = AsWingConstants.RIGHT;
 	/**
-	 * A fast access to AsWingConstants Constant
+	 * 一种快速访问AsWingConstants中HORIZONTAL常量的方式
 	 * @see org.aswing.AsWingConstants
 	 */        
 	public static const HORIZONTAL:int = AsWingConstants.HORIZONTAL;
 	/**
-	 * A fast access to AsWingConstants Constant
+	 * 一种快速访问AsWingConstants中VERTICAL常量的方式
 	 * @see org.aswing.AsWingConstants
 	 */
 	public static const VERTICAL:int   = AsWingConstants.VERTICAL;	
 	
 
-    /** The data model that determines the button's state. */
+    /** 
+    确定按钮状态的数据模型。
+    */
     private var model:ButtonModel;
     
     private var text:String;
@@ -149,8 +150,8 @@ public class AbstractButton extends Component{
 	}
 
     /**
-     * Returns the model that this button represents.
-     * @return the <code>model</code> property
+     * 返回表示此按钮的模型。
+     * @return <code>model</code> 属性
      * @see #setModel()
      */
     public function getModel():ButtonModel{
@@ -158,8 +159,8 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Sets the model that this button represents.
-     * @param m the new <code>ButtonModel</code>
+     * 设置表示此按钮的模型。
+     * @param m 新的 <code>ButtonModel</code>
      * @see #getModel()
      */
     public function setModel(newModel:ButtonModel):void {
@@ -187,10 +188,9 @@ public class AbstractButton extends Component{
     }
          
     /**
-     * Resets the UI property to a value from the current look
-     * and feel.  Subtypes of <code>AbstractButton</code>
-     * should override this to update the UI. For
-     * example, <code>JButton</code> might do the following:
+     * 将 UI 属性重置为当前外观中的一个值。
+     * AbstractButton 的子类型应该重写此方法来更新 UI。
+     * 例如，JButton 可以执行以下操作：
      * <pre>
      *      setUI(ButtonUI(UIManager.getUI(this)));
      * </pre>
@@ -200,7 +200,7 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Programmatically perform a "click".
+     * 通过程序调用来执行一次"单击"。
      */
     public function doClick():void{
     	dispatchEvent(new MouseEvent(MouseEvent.ROLL_OVER, true, false, 0, 0));
@@ -215,19 +215,18 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Adds a action listener to this button. Buttons fire a action event when 
-     * user clicked on it.
-	 * @param listener the listener
-	 * @param priority the priority
-	 * @param useWeakReference Determines whether the reference to the listener is strong or weak.
+     * 将一个 ActionListener 添加到按钮中。当用户点击按钮的时候会触发一次动作事件。
+	 * @param listener 监听器
+	 * @param priority 优先级
+	 * @param useWeakReference 决定监听器的引用方式是强引用还是弱引用。
 	 * @see org.aswing.event.AWEvent#ACT
      */
     public function addActionListener(listener:Function, priority:int=0, useWeakReference:Boolean=false):void{
     	addEventListener(AWEvent.ACT, listener, false, priority, useWeakReference);
     }
 	/**
-	 * Removes a action listener.
-	 * @param listener the listener to be removed.
+	 * 删除一个监听器。
+	 * @param listener 被删除的监听器。
 	 * @see org.aswing.event.AWEvent#ACT
 	 */
 	public function removeActionListener(listener:Function):void{
@@ -235,11 +234,11 @@ public class AbstractButton extends Component{
 	}    
     	
 	/**
-	 * Add a listener to listen the button's selection change event.
-	 * When the button's selection changed, fired when diselected or selected.
-	 * @param listener the listener
-	 * @param priority the priority
-	 * @param useWeakReference Determines whether the reference to the listener is strong or weak.
+	 * 增加对按钮选择状态改变的事件监听。当按钮选择状态改变时，当选中
+	 * 或失去选中状态时触发。
+	 * @param listener 监听器
+	 * @param priority 优先级
+	 * @param useWeakReference 决定监听器的引用方式是强引用还是弱引用。
 	 * @see org.aswing.event.InteractiveEvent#SELECTION_CHANGED
 	 */	
 	public function addSelectionListener(listener:Function, priority:int=0, useWeakReference:Boolean=false):void{
@@ -247,8 +246,8 @@ public class AbstractButton extends Component{
 	}
 
 	/**
-	 * Removes a selection listener.
-	 * @param listener the listener to be removed.
+	 * 删除一个选择事件监听器。
+	 * @param listener 被删除的监听器。
 	 * @see org.aswing.event.InteractiveEvent#SELECTION_CHANGED
 	 */
 	public function removeSelectionListener(listener:Function):void{
@@ -256,20 +255,20 @@ public class AbstractButton extends Component{
 	}
 	
 	/**
-	 * Adds a listener to listen the button's state change event.
+	 * 增加对按钮状态改变的事件。
 	 * <p>
-	 * When the button's state changed, the state is all about:
+	 * 当按钮的状态改变，有以下这些状态：
 	 * <ul>
-	 * <li>enabled</li>
-	 * <li>rollOver</li>
-	 * <li>pressed</li>
-	 * <li>released</li>
-	 * <li>selected</li>
+	 * <li>可用</li>
+	 * <li>鼠标经过</li>
+	 * <li>鼠标按下</li>
+	 * <li>鼠标释放</li>
+	 * <li>被选中</li>
 	 * </ul>
 	 * </p>
-	 * @param listener the listener
-	 * @param priority the priority
-	 * @param useWeakReference Determines whether the reference to the listener is strong or weak.
+	 * @param listener 监听器
+	 * @param priority 优先级
+	 * @param useWeakReference 决定监听器的引用方式是强引用还是弱引用。
 	 * @see org.aswing.event.InteractiveEvent#STATE_CHANGED
 	 */	
 	public function addStateListener(listener:Function, priority:int=0, useWeakReference:Boolean=false):void{
@@ -277,8 +276,8 @@ public class AbstractButton extends Component{
 	}	
 	
 	/**
-	 * Removes a state listener.
-	 * @param listener the listener to be removed.
+	 * 删除状态监听器。
+	 * @param listener 被删除的监听器。
 	 * @see org.aswing.event.InteractiveEvent#STATE_CHANGED
 	 */	
 	public function removeStateListener(listener:Function):void{
@@ -286,8 +285,8 @@ public class AbstractButton extends Component{
 	}
 	
     /**
-     * Enabled (or disabled) the button.
-     * @param b  true to enable the button, otherwise false
+	 * 按钮可用（或者禁用）
+	 * @param b  true 为可用, 否则为 false
      */
 	override public function setEnabled(b:Boolean):void{
 		if (!b && model.isRollOver()) {
@@ -298,34 +297,28 @@ public class AbstractButton extends Component{
     }    
 
     /**
-     * Returns the state of the button. True if the
-     * toggle button is selected, false if it's not.
-     * @return true if the toggle button is selected, otherwise false
+	 * 返回按钮的状态。为true时开关按钮被选中，false时未被选中。
+	 * @return true时开关按钮被选中, 否则为false
      */
     public function isSelected():Boolean{
         return model.isSelected();
     }
     
     /**
-     * Sets the state of the button. Note that this method does not
-     * trigger an Event for users.
-     * Call <code>click</code> to perform a programatic action change.
-     *
-     * @param b  true if the button is selected, otherwise false
+	 * 设置按钮的状态。注意，这个方法不会触发事件。
+	 * 调用 <code>click</code> 来程序化的执行一次动作改变。
+	 * @param b  如果按钮被选中为true，否则为false
      */
     public function setSelected(b:Boolean):void{
         model.setSelected(b);
     }
     
     /**
-     * Sets the <code>rolloverEnabled</code> property, which
-     * must be <code>true</code> for rollover effects to occur.
-     * The default value for the <code>rolloverEnabled</code>
-     * property is <code>false</code>.
-     * Some look and feels might not implement rollover effects;
-     * they will ignore this property.
-     * 
-     * @param b if <code>true</code>, rollover effects should be painted
+	 * 设置 <code>rolloverEnabled</code> 属性，只有当它设置成
+	 * <code>true</code> 的时候鼠标经过效果才能发生。
+	 * <code>rolloverEnabled</code> 默认属性为 <code>false</code>。
+	 * 一些外观可能没有实现鼠标经过时的效果；它们会忽略这个属性。
+	 * @param b 如果为 <code>true</code>， 鼠标经过时绘制效果。
      * @see #isRollOverEnabled()
      */
     public function setRollOverEnabled(b:Boolean):void{
@@ -336,9 +329,9 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Gets the <code>rolloverEnabled</code> property.
-     *
-     * @return the value of the <code>rolloverEnabled</code> property
+	 * 得到 <code>rolloverEnabled</code> 属性。
+	 * 
+	 * @return <code>rolloverEnabled</code> 属性值
      * @see #setRollOverEnabled()
      */    
     public function isRollOverEnabled():Boolean{
@@ -346,16 +339,12 @@ public class AbstractButton extends Component{
     }
 
 	/**
-	 * Sets space for margin between the button's border and
-     * the label. Setting to <code>null</code> will cause the button to
-     * use the default margin.  The button's default <code>Border</code>
-     * object will use this value to create the proper margin.
-     * However, if a non-default border is set on the button, 
-     * it is that <code>Border</code> object's responsibility to create the
-     * appropriate margin space (else this property will
-     * effectively be ignored).
-     *
-     * @param m the space between the border and the label
+	 * 设置按钮边框和标签之间的空白。将该空白设置为 <code>null</code> 会造成按钮使用默认空白。
+	 * 按钮的默认 <code>Border</code> 对象将使用该值来创建适当的空白。
+	 * 不过，如果在按钮上设置非默认边框，
+	 * 则由 <code>Border</code> 对象负责创建适当的空白（否则此属性将被忽略）。
+	 * 
+	 * @param m 边框和标签之间的空白
 	 */
 	public function setMargin(m:Insets):void{
         // Cache the old margin if it comes from the UI
@@ -392,8 +381,8 @@ public class AbstractButton extends Component{
 	}
 	
 	/**
-	 * Wrap a SimpleButton to be this button's representation.
-	 * @param btn the SimpleButton to be wrap.
+	 * 包装一个SimpleButton作为按钮的外观。
+	 * @param btn 被包装的SimpleButton。
 	 */
 	public function wrapSimpleButton(btn:SimpleButton):void{
 		setShiftOffset(0);
@@ -405,15 +394,13 @@ public class AbstractButton extends Component{
 	}
 		
 	/**
-	 * Sets the text include the "&"(mnemonic modifier char). For example, 
-	 * if you set "&File" to be the text, then "File" will be displayed, and "F" 
-	 * will be the mnemonic.
+	 * 在设置文本的时候在文本中加上一个“&”（助记修饰符）。比如，如果你设置文本
+	 * 的内容为“&File”，显示的时候是“File”，“F”就是助记符。
 	 * <p>
-	 * This method will make button repaint, but will not make button relayout, 
-	 * so if you sets a different size text, you may need to call <code>revalidate()</code> 
-	 * to make this button to be relayouted by his container.
+	 * 这个方法会使得按钮重画，但是不会重新调整布局，所以如果你为文本设置了不同的字体大小，
+	 * 你需要调用 <code>revalidate()</code> 来重新进行布局调整。
 	 * </p>
-	 * @param text the text.
+	 * @param text 按钮的文本
 	 * @see #getDisplayText()
 	 * @see #getMnemonic()
 	 * @see #getMnemonicIndex()
@@ -457,8 +444,8 @@ public class AbstractButton extends Component{
 	}
 	
 	/**
-	 * Returns the text include the "&"(mnemonic modifier char).
-	 * @return the text.
+	 * 返回文本，包含“&”（助记修饰符）。
+	 * @return 文本。
 	 * @see #getDisplayText()
 	 */
 	public function getText():String{
@@ -466,16 +453,16 @@ public class AbstractButton extends Component{
 	}
 	
 	/**
-	 * Returns the text to be displayed, it is a text that removed the "&"(mnemonic modifier char).
-	 * @return the text to be displayed.
+	 * 返回显示文本，这个文本不包含“&”（助记修饰符）。
+	 * @return 显示的文本。
 	 */
 	public function getDisplayText():String{
 		return displayText;	
 	}
 	
 	/**
-	 * Returns the mnemonic char index in the display text, -1 means no mnemonic.
-	 * @return the mnemonic char index or -1.
+	 * 返回助记符在显示文本中所在坐标，-1表示没有助记符。
+	 * @return 助记符坐标或者 -1.
 	 * @see #getDisplayText()
 	 */
 	public function getMnemonicIndex():int{
@@ -483,8 +470,8 @@ public class AbstractButton extends Component{
 	}
 	
 	/**
-	 * Returns the keyboard mnemonic for this button, -1 means no mnemonic.
-	 * @return the keyboard mnemonic or -1.
+	 * 返回这个按钮的键盘助记符，-1表示没有助记符。
+	 * @return 键盘助记符或-1。
 	 */
 	public function getMnemonic():int{
 		return mnemonic;
@@ -504,13 +491,12 @@ public class AbstractButton extends Component{
 	}
 	
 	/**
-	 * Sets the default icon for the button.
+	 * 为按钮设置默认的图标。
 	 * <p>
-	 * This method will make button repaint, but will not make button relayout, 
-	 * so if you sets a different size icon, you may need to call <code>revalidate()</code> 
-	 * to make this button to be relayouted by his container.
+	 * 调用这个方法会使得按钮重画，但是不会重新调整布局，所以如果你设置了一个不同大小
+	 * 的图标，你需要调用 <code>revalidate()</code> 来调整布局。
 	 * </p>
-	 * @param defaultIcon the default icon for the button.
+	 * @param defaultIcon 按钮默认的图标。
 	 */
 	public function setIcon(defaultIcon:Icon):void{
 		if(this.defaultIcon != defaultIcon){
@@ -527,8 +513,8 @@ public class AbstractButton extends Component{
 	}
     
     /**
-     * Returns the pressed icon for the button.
-     * @return the <code>pressedIcon</code> property
+	 * 返回按钮按下时的图标。
+	 * @return  <code>pressedIcon</code> 属性
      * @see #setPressedIcon()
      */
     public function getPressedIcon():Icon {
@@ -536,8 +522,8 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Sets the pressed icon for the button.
-     * @param pressedIcon the icon used as the "pressed" image
+	 * 设置按钮按下时的图标。
+	 * @param pressedIcon 这个图标用作为“按下”时的图片。
      * @see #getPressedIcon()
      */
     public function setPressedIcon(pressedIcon:Icon):void {
@@ -553,8 +539,8 @@ public class AbstractButton extends Component{
     }
 
     /**
-     * Returns the selected icon for the button.
-     * @return the <code>selectedIcon</code> property
+	 * 返回按钮被选中时的图标。
+	 * @return  <code>selectedIcon</code> 属性
      * @see #setSelectedIcon()
      */
     public function getSelectedIcon():Icon {
@@ -562,8 +548,8 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Sets the selected icon for the button.
-     * @param selectedIcon the icon used as the "selected" image
+	 * 设置按钮选中时的图标。
+	 * @param selectedIcon 这个图标用作为“选中”时的图片。
      * @see #getSelectedIcon()
      */
     public function setSelectedIcon(selectedIcon:Icon):void {
@@ -579,8 +565,8 @@ public class AbstractButton extends Component{
     }
 
     /**
-     * Returns the rollover icon for the button.
-     * @return the <code>rolloverIcon</code> property
+	 * 返回鼠标移上去时的图标。
+	 * @return  <code>rolloverIcon</code> 属性
      * @see #setRollOverIcon()
      */
     public function getRollOverIcon():Icon {
@@ -588,8 +574,8 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Sets the rollover icon for the button.
-     * @param rolloverIcon the icon used as the "rollover" image
+	 * 设置鼠标移上去时的图标。
+	 * @param rolloverIcon 这个图标用作为“鼠标移上”时的图片。
      * @see #getRollOverIcon()
      */
     public function setRollOverIcon(rolloverIcon:Icon):void {
@@ -607,8 +593,8 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Returns the rollover selection icon for the button.
-     * @return the <code>rolloverSelectedIcon</code> property
+	 * 返回按钮被选中时鼠标移上后的图标。
+	 * @return  <code>rolloverSelectedIcon</code> 属性
      * @see #setRollOverSelectedIcon()
      */
     public function getRollOverSelectedIcon():Icon {
@@ -616,9 +602,8 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Sets the rollover selected icon for the button.
-     * @param rolloverSelectedIcon the icon used as the
-     *		"selected rollover" image
+	 * 设置按钮被选中时鼠标移上后的图标。
+	 * @param rolloverSelectedIcon 这个图标用作为“被选中后鼠标移上”时的图片。
      * @see #getRollOverSelectedIcon()
      */
     public function setRollOverSelectedIcon(rolloverSelectedIcon:Icon):void {
@@ -635,14 +620,11 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Returns the icon used by the button when it's disabled.
-     * If no disabled icon has been set, the button constructs
-     * one from the default icon. 
-     * <p>
-     * The disabled icon really should be created 
-     * (if necessary) by the L&F.-->
-     *
-     * @return the <code>disabledIcon</code> property
+	 * 返回按钮禁用时的图标，如果没有设置此图标，
+	 * 按钮会根据默认的图标构建一个。
+	 * <p>
+	 * 禁用时的图标会被L&F创建（如果需要的话）。
+	 * @return  <code>disabledIcon</code> 属性
      * @see #getPressedIcon()
      * @see #setDisabledIcon()
      */
@@ -658,8 +640,8 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Sets the disabled icon for the button.
-     * @param disabledIcon the icon used as the disabled image
+	 * 设置按钮禁用时的图标。
+	 * @param disabledIcon 这个图标在按钮作为禁用时的图片。
      * @see #getDisabledIcon()
      */
     public function setDisabledIcon(disabledIcon:Icon):void {
@@ -675,14 +657,11 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Returns the icon used by the button when it's disabled and selected.
-     * If not no disabled selection icon has been set, the button constructs
-     * one from the selection icon. 
-     * <p>
-     * The disabled selection icon really should be 
-     * created (if necessary) by the L&F. -->
-     *
-     * @return the <code>disabledSelectedIcon</code> property
+	 * 返回按钮在禁用且被选中时的图标。如果没有设置此图标，按钮将会根据
+	 * 选中时的图标来构建一个。
+	 * <p>
+	 * 禁用且被选中时的图标会被L&F创建。（如果需要的话）
+	 * @return  <code>disabledSelectedIcon</code> 属性
      * @see #getPressedIcon()
      * @see #setDisabledIcon()
      */
@@ -699,9 +678,8 @@ public class AbstractButton extends Component{
     }
 
     /**
-     * Sets the disabled selection icon for the button.
-     * @param disabledSelectedIcon the icon used as the disabled
-     * 		selection image
+	 * 设置按钮禁用并被选中时的图标。
+	 * @param disabledSelectedIcon 此按钮被用作为按钮禁用并被选中时的图片。
      * @see #getDisabledSelectedIcon()
      */
     public function setDisabledSelectedIcon(disabledSelectedIcon:Icon):void {
@@ -718,12 +696,10 @@ public class AbstractButton extends Component{
     }
 
     /**
-     * Returns the vertical alignment of the text and icon.
-     *
-     * @return the <code>verticalAlignment</code> property, one of the
-     *		following values: 
+	 * 返回文本和图标在垂直方向上的对齐方式。
+	 * @return  <code>verticalAlignment</code> 属性，
      * <ul>
-     * <li>AsWingConstants.CENTER (the default)
+     * <li>AsWingConstants.CENTER （默认）
      * <li>AsWingConstants.TOP
      * <li>AsWingConstants.BOTTOM
      * </ul>
@@ -733,10 +709,10 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Sets the vertical alignment of the icon and text.
-     * @param alignment  one of the following values:
+	 * 设置文本和图标的垂直对齐方式。
+	 * @param alignment  为以下这些值之一：
      * <ul>
-     * <li>AsWingConstants.CENTER (the default)
+     * <li>AsWingConstants.CENTER （默认）
      * <li>AsWingConstants.TOP
      * <li>AsWingConstants.BOTTOM
      * </ul>
@@ -751,11 +727,11 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Returns the horizontal alignment of the icon and text.
-     * @return the <code>horizontalAlignment</code> property,
-     *		one of the following values:
+	 * 返回图标和文本的水平对齐方式。
+	 * @return  <code>horizontalAlignment</code> 属性,
+     *		为以下这些值之一：
      * <ul>
-     * <li>AsWingConstants.RIGHT (the default)
+     * <li>AsWingConstants.RIGHT （默认）
      * <li>AsWingConstants.LEFT
      * <li>AsWingConstants.CENTER
      * </ul>
@@ -765,10 +741,10 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Sets the horizontal alignment of the icon and text.
-     * @param alignment  one of the following values:
+	 * 设置图标和文本的水平对齐方式。
+	 * @param alignment  为以下这些值之一：
      * <ul>
-     * <li>AsWingConstants.RIGHT (the default)
+     * <li>AsWingConstants.RIGHT （默认）
      * <li>AsWingConstants.LEFT
      * <li>AsWingConstants.CENTER
      * </ul>
@@ -784,11 +760,11 @@ public class AbstractButton extends Component{
 
     
     /**
-     * Returns the vertical position of the text relative to the icon.
-     * @return the <code>verticalTextPosition</code> property, 
-     *		one of the following values:
+	 * 返回文本相对于图标在垂直方向上的位置。
+	 * @return  <code>verticalTextPosition</code> 属性, 
+     *		为以下这些值之一：
      * <ul>
-     * <li>AsWingConstants.CENTER  (the default)
+     * <li>AsWingConstants.CENTER  （默认）
      * <li>AsWingConstants.TOP
      * <li>AsWingConstants.BOTTOM
      * </ul>
@@ -798,10 +774,10 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Sets the vertical position of the text relative to the icon.
-     * @param alignment  one of the following values:
+	 * 设置文本相对于图标在垂直方向上的位置。
+	 * @param alignment  为一些这些值之一：
      * <ul>
-     * <li>AsWingConstants.CENTER (the default)
+     * <li>AsWingConstants.CENTER （默认）
      * <li>AsWingConstants.TOP
      * <li>AsWingConstants.BOTTOM
      * </ul>
@@ -817,11 +793,11 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Returns the horizontal position of the text relative to the icon.
-     * @return the <code>horizontalTextPosition</code> property, 
-     * 		one of the following values:
+	 * 返回文本相对于图标在水平方向上的位置。
+     * @return  <code>horizontalTextPosition</code> 属性, 
+     * 		为以下这些值之一：
      * <ul>
-     * <li>AsWingConstants.RIGHT (the default)
+     * <li>AsWingConstants.RIGHT （默认）
      * <li>AsWingConstants.LEFT
      * <li>AsWingConstants.CENTER
      * </ul>
@@ -831,10 +807,10 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Sets the horizontal position of the text relative to the icon.
-     * @param textPosition one of the following values:
+	 * 设置文本相对于图标在水平方向上的位置。
+	 * @param textPosition 为以下这些值之一：
      * <ul>
-     * <li>AsWingConstants.RIGHT (the default)
+     * <li>AsWingConstants.RIGHT （默认）
      * <li>AsWingConstants.LEFT
      * <li>AsWingConstants.CENTER
      * </ul>
@@ -850,11 +826,8 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Returns the amount of space between the text and the icon
-     * displayed in this button.
-     *
-     * @return an int equal to the number of pixels between the text
-     *         and the icon.
+	 * 返回按钮中文本与图标之间的空白数量。
+	 * @return 文本与图标之间的像素值。
      * @see #setIconTextGap()
      */
     public function getIconTextGap():int {
@@ -862,12 +835,11 @@ public class AbstractButton extends Component{
     }
 
     /**
-     * If both the icon and text properties are set, this property
-     * defines the space between them.  
-     * <p>
-     * The default value of this property is 4 pixels.
-     * 
-     * @see #getIconTextGap()
+	 * 如果图标与文本属性都设置过的话，这个属性定义它们之间的空白部分。
+	 * <p>
+	 * 这个属性的默认值是4个像素。
+	 * 
+	 * @see #getIconTextGap()
      */
     public function setIconTextGap(iconTextGap:int):void {
         var oldValue:int = this.iconTextGap;
@@ -879,16 +851,16 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Returns the shift offset when mouse press.
-     *
-     * @return the shift offset when mouse press.
+	 * 返回当鼠标按下时，按钮中文本与图标出现位置偏移量。
+	 * 
+	 * @return 鼠标按下时，按钮中文本与图标出现位置偏移量。
      */
     public function getShiftOffset():int {
         return shiftOffset;
     }
 
     /**
-     * Set the shift offset when mouse press.
+	 * 设置鼠标按下时，按钮中文本与图标出现位置偏移量。
      */
     public function setShiftOffset(shiftOffset:int):void {
         var oldValue:int = this.shiftOffset;
@@ -901,14 +873,14 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Return whether or not the shiftOffset has set by user. The LAF will not change this value if it is true.
+	 * 返回是否由用户来设置了shiftOffset。如果返回true的话LAF将不会改变shiftOffset。
      */
     public function isShiftOffsetSet():Boolean{
     	return shiftOffsetSet;
     }
     
    /**
-    * Set whether or not the shiftOffset has set by user. The LAF will not change this value if it is true.
+	* 设置是否由用户来设置shiftOffset。如果为true LAF将不会改变shiftOffset。
     */
     public function setShiftOffsetSet(b:Boolean):void{
     	shiftOffsetSet = b;
