@@ -8,7 +8,7 @@ package org.aswing
 	import org.aswing.Component;
 	
 /**
- * LayoutManager's empty implementation.
+ * 对LayoutManager接口的空实现
  * @author iiley
  */
 public class EmptyLayout implements LayoutManager
@@ -31,7 +31,7 @@ public class EmptyLayout implements LayoutManager
     }
 	
 	/**
-	 * Simply return target.getSize();
+	 * 仅返回传入容器的尺寸
 	 */
     public function preferredLayoutSize(target:Container):IntDimension{
     	return target.getSize();
@@ -45,7 +45,7 @@ public class EmptyLayout implements LayoutManager
     }
 	
 	/**
-	 * return IntDimension.createBigDimension();
+	 * @return IntDimension.createBigDimension();
 	 */
     public function maximumLayoutSize(target:Container):IntDimension{
     	return IntDimension.createBigDimension();

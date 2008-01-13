@@ -10,42 +10,35 @@ import org.aswing.Insets;
 import org.aswing.geom.IntPoint;
 
 /**
- * A flow layout arranges components in a left-to-right flow, much
- * like lines of text in a paragraph. Flow layouts are typically used
- * to arrange buttons in a panel. It will arrange
- * buttons left to right until no more buttons fit on the same line.
- * Each line is centered.
+ * 流布局用于安排有向流中的组件，这非常类似于段落中的文本行。
+ * 流布局一般用来安排面板中的按钮。它使得按钮呈水平放置，
+ * 直到同一条线上再也没有适合的按钮。
+ * 每行都是居中的。
  * <p></p>
- * For example, the following picture shows an applet using the flow
- * layout manager (its default layout manager) to position three buttons:
- * <p></p>
- * A flow layout lets each component assume its natural (preferred) size.
+ * 流布局将使每个组件的尺寸都为他们的最佳尺寸
  *
  * @author 	iiley
  */
 public class FlowLayout extends EmptyLayout{
 
     /**
-     * This value indicates that each row of components
-     * should be left-justified.
+     * 此值指示每一行组件都应该是左对齐的。
      */
     public static const LEFT:int 	= AsWingConstants.LEFT;
 
     /**
-     * This value indicates that each row of components
-     * should be centered.
+     * 此值指示每一行组件都应该是居中的。
      */
     public static const CENTER:int 	= AsWingConstants.CENTER;
 
     /**
-     * This value indicates that each row of components
-     * should be right-justified.
+     * 此值指示每一行组件都应该是右对齐的。
      */
     public static const RIGHT:int 	= AsWingConstants.RIGHT;
 
     /**
-     * <code>align</code> is the property that determines
-     * how each row distributes empty space.
+     * <code>align</code>属性决定如何分配每一行的空白部分
+     * 可以是以下三个值之一：
      * It can be one of the following values:
      * <ul>
      * <code>LEFT</code>
@@ -62,6 +55,7 @@ public class FlowLayout extends EmptyLayout{
      * The flow layout manager allows a seperation of
      * components with gaps.  The horizontal gap will
      * specify the space between components.
+     * 流布局允许通过间隙来分隔组件。水平间隙用于指定组件之间的空白。
      *
      * @see #getHgap()
      * @see #setHgap(int)
@@ -69,9 +63,7 @@ public class FlowLayout extends EmptyLayout{
     protected var hgap:int;
 
     /**
-     * The flow layout manager allows a seperation of
-     * components with gaps.  The vertical gap will
-     * specify the space between rows.
+     * 流布局允许通过间隙来分隔组件。垂直间隙用于指定行之间的空白。
      *
      * @see #getHgap()
      * @see #setHgap(int)
@@ -79,21 +71,20 @@ public class FlowLayout extends EmptyLayout{
     protected var vgap:int;
     
     /**
-     * whether or not the gap will margin around
+     * 间隙是否作用于容器四周
      */
     protected var margin:Boolean;
 
     /**
      * <p>  
-     * Creates a new flow layout manager with the indicated alignment
-     * and the indicated horizontal and vertical gaps.
+     * 建立一个新的流布局并指定对齐方式与水平间隙和垂直间隙。
      * </p>
-     * The value of the alignment argument must be one of
+     * 对齐方式参数的值必须是这几个中的一个
      * <code>FlowLayout.LEFT</code>, <code>FlowLayout.RIGHT</code>,or <code>FlowLayout.CENTER</code>.
-     * @param      align   the alignment value, default is LEFT
-     * @param      hgap    the horizontal gap between components, default 5
-     * @param      vgap    the vertical gap between components, default 5
-     * @param      margin  whether or not the gap will margin around
+     * @param      align   对齐方式，默认为左对齐(LEFT)
+     * @param      hgap    组件之间的水平间隙，默认为 5
+     * @param      vgap    组件之间的垂直间隙，默认为 5
+     * @param      margin  间隙是否作为四周空白
      */
     public function FlowLayout(align:int=AsWingConstants.LEFT, hgap:int=5, vgap:int=5, margin:Boolean=true) {
     	this.margin = margin;
@@ -103,23 +94,23 @@ public class FlowLayout extends EmptyLayout{
     }
     
     /**
-     * Sets whether or not the gap will margin around.
+     * 设置间隙是否作为四周空白。
      */
     public function setMargin(b:Boolean):void{
     	margin = b;
     }
     
     /**
-     * Returns whether or not the gap will margin around.
+     * 返回间隙是否作为四周空白。
      */    
     public function isMargin():Boolean{
     	return margin;
     }
 
     /**
-     * Gets the alignment for this layout.
-     * Possible values are <code>FlowLayout.LEFT</code>,<code>FlowLayout.RIGHT</code>, <code>FlowLayout.CENTER</code>,
-     * @return     the alignment value for this layout
+     * 获取该布局的对齐方式。
+     * 可能的值为 <code>FlowLayout.LEFT</code>,<code>FlowLayout.RIGHT</code>, <code>FlowLayout.CENTER</code>,
+     * @return     该布局的对齐方式
      * @see        #setAlignment
      */
     public function getAlignment():int {
@@ -127,14 +118,14 @@ public class FlowLayout extends EmptyLayout{
     }
 
     /**
-     * Sets the alignment for this layout.
-     * Possible values are
+     * 设置该布局的对齐方式。
+     * 允许的值为
      * <ul>
      * <li><code>FlowLayout.LEFT</code>
      * <li><code>FlowLayout.RIGHT</code>
      * <li><code>FlowLayout.CENTER</code>
      * </ul>
-     * @param      align one of the alignment values shown above
+     * @param      align 以上值中的一个
      * @see        #getAlignment()
      */
     public function setAlignment(align:int):void {
@@ -145,8 +136,8 @@ public class FlowLayout extends EmptyLayout{
     }
 
     /**
-     * Gets the horizontal gap between components.
-     * @return     the horizontal gap between components
+     * 获取组件之间的水平间隙。
+     * @return     组件之间的水平间隙
      * @see        #setHgap()
      */
     public function getHgap():int {
@@ -154,8 +145,8 @@ public class FlowLayout extends EmptyLayout{
     }
 
     /**
-     * Sets the horizontal gap between components.
-     * @param hgap the horizontal gap between components
+     * 设置组件之间的水平间隙。
+     * @param hgap 组件之间的水平间隙
      * @see        #getHgap()
      */
     public function setHgap(hgap:int):void {
@@ -163,8 +154,8 @@ public class FlowLayout extends EmptyLayout{
     }
 
     /**
-     * Gets the vertical gap between components.
-     * @return     the vertical gap between components
+     * 获取组件之间的垂直间隙。
+     * @return     组件之间的垂直间隙
      * @see        #setVgap()
      */
     public function getVgap():int {
@@ -172,8 +163,8 @@ public class FlowLayout extends EmptyLayout{
     }
 
     /**
-     * Sets the vertical gap between components.
-     * @param vgap the vertical gap between components
+     * 设置组件直接的垂直间隙。
+     * @param vgap 组件直接的垂直间隙
      * @see        #getVgap()
      */
     public function setVgap(vgap:int):void {
@@ -181,11 +172,9 @@ public class FlowLayout extends EmptyLayout{
     }
 
     /**
-     * Returns the preferred dimensions for this layout given the 
-     * <i>visible</i> components in the specified target container.
-     * @param target the component which needs to be laid out
-     * @return    the preferred dimensions to lay out the
-     *            subcomponents of the specified container
+     * 返回该布局提供给指定容器中<i>可视</i>组件的最佳尺寸。
+     * @param target 需要布置的容器
+     * @return    对子组件进行布局的容器的最佳尺寸
      * @see Container
      * @see #doLayout()
      */
@@ -217,11 +206,9 @@ public class FlowLayout extends EmptyLayout{
     }
 
     /**
-     * Returns the minimum dimensions needed to layout the <i>visible</i>
-     * components contained in the specified target container.
-     * @param target the component which needs to be laid out
-     * @return    the minimum dimensions to lay out the
-     *            subcomponents of the specified container
+     * 返回需要对<i>可视</i>组件进行布局的容器的最小尺寸。
+     * @param target 要布局的容器
+     * @return    需要对<i>可视</i>组件进行布局的容器的最小尺寸
      * @see #preferredLayoutSize()
      * @see Container
      * @see Container#doLayout()
@@ -265,11 +252,9 @@ public class FlowLayout extends EmptyLayout{
     }
 
     /**
-     * Lays out the container. This method lets each component take
-     * its preferred size by reshaping the components in the
-     * target container in order to satisfy the alignment of
-     * this <code>FlowLayout</code> object.
-     * @param target the specified component being laid out
+     * 布置容器。该方法使每个组件都显示为其最佳尺寸以符合<code>FlowLayout</code>
+     * 对象的排列方式。
+     * @param target 要布局的容器
      * @see Container
      * @see Container#doLayout
      */
@@ -310,9 +295,8 @@ public class FlowLayout extends EmptyLayout{
     }
     
     /**
-     * Returns a string representation of this <code>FlowLayout</code>
-     * object and its values.
-     * @return     a string representation of this layout
+     * 返回描述该 <code>FlowLayout</code> 对象的字符串。
+     * @return     一个描述该布局的字符串
      */
     public function toString():String {
 		var str:String = "";
