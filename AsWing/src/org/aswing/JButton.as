@@ -9,6 +9,7 @@ import org.aswing.plaf.basic.BasicButtonUI;
 import flash.display.SimpleButton;
 
 /**
+ * 按钮的一个实现。
  * An implementation of a "push" button.
  * @author iiley
  */
