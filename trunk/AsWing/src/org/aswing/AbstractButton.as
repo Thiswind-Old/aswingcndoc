@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  Copyright aswing.org, see the LICENCE.txt.
 */
 
@@ -15,83 +15,83 @@ import org.aswing.util.*;
 import flash.display.SimpleButton;
 	
 /**
- * µ±°´Å¥Ä£ĞÍÖ´ĞĞ¶¯×÷Ê±·Ö·¢¸ÃÊÂ¼ş£¬Í¨³£Çé¿öÏÂÊÇÓÉÓÃ»§µã»÷°´Å¥»òÕßµ÷ÓÃ <code>doClick()</code> ·½·¨¡£
+ * å½“æŒ‰é’®æ¨¡å‹æ‰§è¡ŒåŠ¨ä½œæ—¶åˆ†å‘è¯¥äº‹ä»¶ï¼Œé€šå¸¸æƒ…å†µä¸‹æ˜¯ç”±ç”¨æˆ·ç‚¹å‡»æŒ‰é’®æˆ–è€…è°ƒç”¨ <code>doClick()</code> æ–¹æ³•ã€‚
  * @eventType org.aswing.event.AWEvent.ACT
  * @see org.aswing.AbstractButton#addActionListener()
  */
 [Event(name="act", type="org.aswing.event.AWEvent")]
 
 /**
- * µ±°´Å¥µÄ×´Ì¬·¢Éú¸Ä±äÊ±·Ö·¢¸ÃÊÂ¼ş£¬ÓĞÒÔÏÂÕâĞ©×´Ì¬£º
+ * å½“æŒ‰é’®çš„çŠ¶æ€å‘ç”Ÿæ”¹å˜æ—¶åˆ†å‘è¯¥äº‹ä»¶ï¼Œæœ‰ä»¥ä¸‹è¿™äº›çŠ¶æ€ï¼š
  * <ul>
- * <li>¿ÉÓÃ</li>
- * <li>Êó±ê¾­¹ı</li>
- * <li>Êó±ê°´ÏÂ</li>
- * <li>Êó±êÊÍ·Å</li>
- * <li>±»Ñ¡ÖĞ</li>
+ * <li>å¯ç”¨</li>
+ * <li>é¼ æ ‡ç»è¿‡</li>
+ * <li>é¼ æ ‡æŒ‰ä¸‹</li>
+ * <li>é¼ æ ‡é‡Šæ”¾</li>
+ * <li>è¢«é€‰ä¸­</li>
  * </ul>
  * </p>
  * <p>
- * °´Å¥×ÜÊÇ´¥·¢ <code>programmatic=false</code> InteractiveEvent.
+ * æŒ‰é’®æ€»æ˜¯è§¦å‘ <code>programmatic=false</code> InteractiveEvent.
  * </p>
  * @eventType org.aswing.event.InteractiveEvent.STATE_CHANGED
  */
 [Event(name="stateChanged", type="org.aswing.event.InteractiveEvent")]
 	
 /**
- *  °´Å¥µÄÑ¡Ôñ×´Ì¬±»¸Ä±äÊ±´¥·¢¸ÃÊÂ¼ş¡£
+ *  æŒ‰é’®çš„é€‰æ‹©çŠ¶æ€è¢«æ”¹å˜æ—¶è§¦å‘è¯¥äº‹ä»¶ã€‚
  * <p>
- * °´Å¥×ÜÊÇ´¥·¢ <code>programmatic=false</code> InteractiveEvent.
+ * æŒ‰é’®æ€»æ˜¯è§¦å‘ <code>programmatic=false</code> InteractiveEvent.
  * </p>
  *  @eventType org.aswing.event.InteractiveEvent.SELECTION_CHANGED
  */
 [Event(name="selectionChanged", type="org.aswing.event.InteractiveEvent")]
 
 /**
- * ¶¨Òå°´Å¥ºÍ²Ëµ¥ÏîµÄÍ¨ÓÃĞĞÎª¡£
+ * å®šä¹‰æŒ‰é’®å’Œèœå•é¡¹çš„é€šç”¨è¡Œä¸ºã€‚
  * @author iiley
  */
 public class AbstractButton extends Component{
 	
 	/**
-	 * Ò»ÖÖ¿ìËÙ·ÃÎÊAsWingConstantsÖĞCENTER³£Á¿µÄ·½Ê½
+	 * ä¸€ç§å¿«é€Ÿè®¿é—®AsWingConstantsä¸­CENTERå¸¸é‡çš„æ–¹å¼
 	 * @see org.aswing.AsWingConstants
 	 */
 	public static const CENTER:int  = AsWingConstants.CENTER;
 	/**
-	 * Ò»ÖÖ¿ìËÙ·ÃÎÊAsWingConstantsÖĞTOP³£Á¿µÄ·½Ê½
+	 * ä¸€ç§å¿«é€Ÿè®¿é—®AsWingConstantsä¸­TOPå¸¸é‡çš„æ–¹å¼
 	 * @see org.aswing.AsWingConstants
 	 */
 	public static const TOP:int     = AsWingConstants.TOP;
 	/**
-	 * Ò»ÖÖ¿ìËÙ·ÃÎÊAsWingConstantsÖĞLEFT³£Á¿µÄ·½Ê½
+	 * ä¸€ç§å¿«é€Ÿè®¿é—®AsWingConstantsä¸­LEFTå¸¸é‡çš„æ–¹å¼
 	 * @see org.aswing.AsWingConstants
 	 */
     public static const LEFT:int    = AsWingConstants.LEFT;
 	/**
-	 * Ò»ÖÖ¿ìËÙ·ÃÎÊAsWingConstantsÖĞBOTTOM³£Á¿µÄ·½Ê½
+	 * ä¸€ç§å¿«é€Ÿè®¿é—®AsWingConstantsä¸­BOTTOMå¸¸é‡çš„æ–¹å¼
 	 * @see org.aswing.AsWingConstants
 	 */
     public static const BOTTOM:int  = AsWingConstants.BOTTOM;
  	/**
-	 * Ò»ÖÖ¿ìËÙ·ÃÎÊAsWingConstantsÖĞRIGHT³£Á¿µÄ·½Ê½
+	 * ä¸€ç§å¿«é€Ÿè®¿é—®AsWingConstantsä¸­RIGHTå¸¸é‡çš„æ–¹å¼
 	 * @see org.aswing.AsWingConstants
 	 */
     public static const RIGHT:int   = AsWingConstants.RIGHT;
 	/**
-	 * Ò»ÖÖ¿ìËÙ·ÃÎÊAsWingConstantsÖĞHORIZONTAL³£Á¿µÄ·½Ê½
+	 * ä¸€ç§å¿«é€Ÿè®¿é—®AsWingConstantsä¸­HORIZONTALå¸¸é‡çš„æ–¹å¼
 	 * @see org.aswing.AsWingConstants
 	 */        
 	public static const HORIZONTAL:int = AsWingConstants.HORIZONTAL;
 	/**
-	 * Ò»ÖÖ¿ìËÙ·ÃÎÊAsWingConstantsÖĞVERTICAL³£Á¿µÄ·½Ê½
+	 * ä¸€ç§å¿«é€Ÿè®¿é—®AsWingConstantsä¸­VERTICALå¸¸é‡çš„æ–¹å¼
 	 * @see org.aswing.AsWingConstants
 	 */
 	public static const VERTICAL:int   = AsWingConstants.VERTICAL;	
 	
 
     /** 
-    È·¶¨°´Å¥×´Ì¬µÄÊı¾İÄ£ĞÍ¡£
+    ç¡®å®šæŒ‰é’®çŠ¶æ€çš„æ•°æ®æ¨¡å‹ã€‚
     */
     private var model:ButtonModel;
     
@@ -150,8 +150,8 @@ public class AbstractButton extends Component{
 	}
 
     /**
-     * ·µ»Ø±íÊ¾´Ë°´Å¥µÄÄ£ĞÍ¡£
-     * @return <code>model</code> ÊôĞÔ
+     * è¿”å›è¡¨ç¤ºæ­¤æŒ‰é’®çš„æ¨¡å‹ã€‚
+     * @return <code>model</code> å±æ€§
      * @see #setModel()
      */
     public function getModel():ButtonModel{
@@ -159,8 +159,8 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * ÉèÖÃ±íÊ¾´Ë°´Å¥µÄÄ£ĞÍ¡£
-     * @param m ĞÂµÄ <code>ButtonModel</code>
+     * è®¾ç½®è¡¨ç¤ºæ­¤æŒ‰é’®çš„æ¨¡å‹ã€‚
+     * @param m æ–°çš„ <code>ButtonModel</code>
      * @see #getModel()
      */
     public function setModel(newModel:ButtonModel):void {
@@ -188,9 +188,9 @@ public class AbstractButton extends Component{
     }
          
     /**
-     * ½« UI ÊôĞÔÖØÖÃÎªµ±Ç°Íâ¹ÛÖĞµÄÒ»¸öÖµ¡£
-     * AbstractButton µÄ×ÓÀàĞÍÓ¦¸ÃÖØĞ´´Ë·½·¨À´¸üĞÂ UI¡£
-     * ÀıÈç£¬JButton ¿ÉÒÔÖ´ĞĞÒÔÏÂ²Ù×÷£º
+     * å°† UI å±æ€§é‡ç½®ä¸ºå½“å‰å¤–è§‚ä¸­çš„ä¸€ä¸ªå€¼ã€‚
+     * AbstractButton çš„å­ç±»å‹åº”è¯¥é‡å†™æ­¤æ–¹æ³•æ¥æ›´æ–° UIã€‚
+     * ä¾‹å¦‚ï¼ŒJButton å¯ä»¥æ‰§è¡Œä»¥ä¸‹æ“ä½œï¼š
      * <pre>
      *      setUI(ButtonUI(UIManager.getUI(this)));
      * </pre>
@@ -200,7 +200,7 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * Í¨¹ı³ÌĞòµ÷ÓÃÀ´Ö´ĞĞÒ»´Î"µ¥»÷"¡£
+     * é€šè¿‡ç¨‹åºè°ƒç”¨æ¥æ‰§è¡Œä¸€æ¬¡"å•å‡»"ã€‚
      */
     public function doClick():void{
     	dispatchEvent(new MouseEvent(MouseEvent.ROLL_OVER, true, false, 0, 0));
@@ -215,18 +215,18 @@ public class AbstractButton extends Component{
     }
     
     /**
-     * ½«Ò»¸ö ActionListener Ìí¼Óµ½°´Å¥ÖĞ¡£µ±ÓÃ»§µã»÷°´Å¥µÄÊ±ºò»á´¥·¢Ò»´Î¶¯×÷ÊÂ¼ş¡£
-	 * @param listener ¼àÌıÆ÷
-	 * @param priority ÓÅÏÈ¼¶
-	 * @param useWeakReference ¾ö¶¨¼àÌıÆ÷µÄÒıÓÃ·½Ê½ÊÇÇ¿ÒıÓÃ»¹ÊÇÈõÒıÓÃ¡£
+     * å°†ä¸€ä¸ª ActionListener æ·»åŠ åˆ°æŒ‰é’®ä¸­ã€‚å½“ç”¨æˆ·ç‚¹å‡»æŒ‰é’®çš„æ—¶å€™ä¼šè§¦å‘ä¸€æ¬¡åŠ¨ä½œäº‹ä»¶ã€‚
+	 * @param listener ç›‘å¬å™¨
+	 * @param priority ä¼˜å…ˆçº§
+	 * @param useWeakReference å†³å®šç›‘å¬å™¨çš„å¼•ç”¨æ–¹å¼æ˜¯å¼ºå¼•ç”¨è¿˜æ˜¯å¼±å¼•ç”¨ã€‚
 	 * @see org.aswing.event.AWEvent#ACT
      */
     public function addActionListener(listener:Function, priority:int=0, useWeakReference:Boolean=false):void{
     	addEventListener(AWEvent.ACT, listener, false, priority, useWeakReference);
     }
 	/**
-	 * É¾³ıÒ»¸ö¼àÌıÆ÷¡£
-	 * @param listener ±»É¾³ıµÄ¼àÌıÆ÷¡£
+	 * åˆ é™¤ä¸€ä¸ªç›‘å¬å™¨ã€‚
+	 * @param listener è¢«åˆ é™¤çš„ç›‘å¬å™¨ã€‚
 	 * @see org.aswing.event.AWEvent#ACT
 	 */
 	public function removeActionListener(listener:Function):void{
@@ -234,11 +234,11 @@ public class AbstractButton extends Component{
 	}    
     	
 	/**
-	 * Ôö¼Ó¶Ô°´Å¥Ñ¡Ôñ×´Ì¬¸Ä±äµÄÊÂ¼ş¼àÌı¡£µ±°´Å¥Ñ¡Ôñ×´Ì¬¸Ä±äÊ±£¬µ±Ñ¡ÖĞ
-	 * »òÊ§È¥Ñ¡ÖĞ×´Ì¬Ê±´¥·¢¡£
-	 * @param listener ¼àÌıÆ÷
-	 * @param priority ÓÅÏÈ¼¶
-	 * @param useWeakReference ¾ö¶¨¼àÌıÆ÷µÄÒıÓÃ·½Ê½ÊÇÇ¿ÒıÓÃ»¹ÊÇÈõÒıÓÃ¡£
+	 * å¢åŠ å¯¹æŒ‰é’®é€‰æ‹©çŠ¶æ€æ”¹å˜çš„äº‹ä»¶ç›‘å¬ã€‚å½“æŒ‰é’®é€‰æ‹©çŠ¶æ€æ”¹å˜æ—¶ï¼Œå½“é€‰ä¸­
+	 * æˆ–å¤±å»é€‰ä¸­çŠ¶æ€æ—¶è§¦å‘ã€‚
+	 * @param listener ç›‘å¬å™¨
+	 * @param priority ä¼˜å…ˆçº§
+	 * @param useWeakReference å†³å®šç›‘å¬å™¨çš„å¼•ç”¨æ–¹å¼æ˜¯å¼ºå¼•ç”¨è¿˜æ˜¯å¼±å¼•ç”¨ã€‚
 	 * @see org.aswing.event.InteractiveEvent#SELECTION_CHANGED
 	 */	
 	public function addSelectionListener(listener:Function, priority:int=0, useWeakReference:Boolean=false):void{
@@ -246,8 +246,8 @@ public class AbstractButton extends Component{
 	}
 
 	/**
-	 * É¾³ıÒ»¸öÑ¡ÔñÊÂ¼ş¼àÌıÆ÷¡£
-	 * @param listener ±»É¾³ıµÄ¼àÌıÆ÷¡£
+	 * åˆ é™¤ä¸€ä¸ªé€‰æ‹©äº‹ä»¶ç›‘å¬å™¨ã€‚
+	 * @param listener è¢«åˆ é™¤çš„ç›‘å¬å™¨ã€‚
 	 * @see org.aswing.event.InteractiveEvent#SELECTION_CHANGED
 	 */
 	public function removeSelectionListener(listener:Function):void{
@@ -255,20 +255,20 @@ public class AbstractButton extends Component{
 	}
 	
 	/**
-	 * Ôö¼Ó¶Ô°´Å¥×´Ì¬¸Ä±äµÄÊÂ¼ş¡£
+	 * å¢åŠ å¯¹æŒ‰é’®çŠ¶æ€æ”¹å˜çš„äº‹ä»¶ã€‚
 	 * <p>
-	 * µ±°´Å¥µÄ×´Ì¬¸Ä±ä£¬ÓĞÒÔÏÂÕâĞ©×´Ì¬£º
+	 * å½“æŒ‰é’®çš„çŠ¶æ€æ”¹å˜ï¼Œæœ‰ä»¥ä¸‹è¿™äº›çŠ¶æ€ï¼š
 	 * <ul>
-	 * <li>¿ÉÓÃ</li>
-	 * <li>Êó±ê¾­¹ı</li>
-	 * <li>Êó±ê°´ÏÂ</li>
-	 * <li>Êó±êÊÍ·Å</li>
-	 * <li>±»Ñ¡ÖĞ</li>
+	 * <li>å¯ç”¨</li>
+	 * <li>é¼ æ ‡ç»è¿‡</li>
+	 * <li>é¼ æ ‡æŒ‰ä¸‹</li>
+	 * <li>é¼ æ ‡é‡Šæ”¾</li>
+	 * <li>è¢«é€‰ä¸­</li>
 	 * </ul>
 	 * </p>
-	 * @param listener ¼àÌıÆ÷
-	 * @param priority ÓÅÏÈ¼¶
-	 * @param useWeakReference ¾ö¶¨¼àÌıÆ÷µÄÒıÓÃ·½Ê½ÊÇÇ¿ÒıÓÃ»¹ÊÇÈõÒıÓÃ¡£
+	 * @param listener ç›‘å¬å™¨
+	 * @param priority ä¼˜å…ˆçº§
+	 * @param useWeakReference å†³å®šç›‘å¬å™¨çš„å¼•ç”¨æ–¹å¼æ˜¯å¼ºå¼•ç”¨è¿˜æ˜¯å¼±å¼•ç”¨ã€‚
 	 * @see org.aswing.event.InteractiveEvent#STATE_CHANGED
 	 */	
 	public function addStateListener(listener:Function, priority:int=0, useWeakReference:Boolean=false):void{
@@ -276,8 +276,8 @@ public class AbstractButton extends Component{
 	}	
 	
 	/**
-	 * É¾³ı×´Ì¬¼àÌıÆ÷¡£
-	 * @param listener ±»É¾³ıµÄ¼àÌıÆ÷¡£
+	 * åˆ é™¤çŠ¶æ€ç›‘å¬å™¨ã€‚
+	 * @param listener è¢«åˆ é™¤çš„ç›‘å¬å™¨ã€‚
 	 * @see org.aswing.event.InteractiveEvent#STATE_CHANGED
 	 */	
 	public function removeStateListener(listener:Function):void{
@@ -285,8 +285,8 @@ public class AbstractButton extends Component{
 	}
 	
     /**
-	 * °´Å¥¿ÉÓÃ£¨»òÕß½ûÓÃ£©
-	 * @param b  true Îª¿ÉÓÃ, ·ñÔòÎª false
+	 * æŒ‰é’®å¯ç”¨ï¼ˆæˆ–è€…ç¦ç”¨ï¼‰
+	 * @param b  true ä¸ºå¯ç”¨, å¦åˆ™ä¸º false
      */
 	override public function setEnabled(b:Boolean):void{
 		if (!b && model.isRollOver()) {
@@ -297,28 +297,28 @@ public class AbstractButton extends Component{
     }    
 
     /**
-	 * ·µ»Ø°´Å¥µÄ×´Ì¬¡£ÎªtrueÊ±¿ª¹Ø°´Å¥±»Ñ¡ÖĞ£¬falseÊ±Î´±»Ñ¡ÖĞ¡£
-	 * @return trueÊ±¿ª¹Ø°´Å¥±»Ñ¡ÖĞ, ·ñÔòÎªfalse
+	 * è¿”å›æŒ‰é’®çš„çŠ¶æ€ã€‚ä¸ºtrueæ—¶å¼€å…³æŒ‰é’®è¢«é€‰ä¸­ï¼Œfalseæ—¶æœªè¢«é€‰ä¸­ã€‚
+	 * @return trueæ—¶å¼€å…³æŒ‰é’®è¢«é€‰ä¸­, å¦åˆ™ä¸ºfalse
      */
     public function isSelected():Boolean{
         return model.isSelected();
     }
     
     /**
-	 * ÉèÖÃ°´Å¥µÄ×´Ì¬¡£×¢Òâ£¬Õâ¸ö·½·¨²»»á´¥·¢ÊÂ¼ş¡£
-	 * µ÷ÓÃ <code>click</code> À´³ÌĞò»¯µÄÖ´ĞĞÒ»´Î¶¯×÷¸Ä±ä¡£
-	 * @param b  Èç¹û°´Å¥±»Ñ¡ÖĞÎªtrue£¬·ñÔòÎªfalse
+	 * è®¾ç½®æŒ‰é’®çš„çŠ¶æ€ã€‚æ³¨æ„ï¼Œè¿™ä¸ªæ–¹æ³•ä¸ä¼šè§¦å‘äº‹ä»¶ã€‚
+	 * è°ƒç”¨ <code>click</code> æ¥ç¨‹åºåŒ–çš„æ‰§è¡Œä¸€æ¬¡åŠ¨ä½œæ”¹å˜ã€‚
+	 * @param b  å¦‚æœæŒ‰é’®è¢«é€‰ä¸­ä¸ºtrueï¼Œå¦åˆ™ä¸ºfalse
      */
     public function setSelected(b:Boolean):void{
         model.setSelected(b);
     }
     
     /**
-	 * ÉèÖÃ <code>rolloverEnabled</code> ÊôĞÔ£¬Ö»ÓĞµ±ËüÉèÖÃ³É
-	 * <code>true</code> µÄÊ±ºòÊó±ê¾­¹ıĞ§¹û²ÅÄÜ·¢Éú¡£
-	 * <code>rolloverEnabled</code> Ä¬ÈÏÊôĞÔÎª <code>false</code>¡£
-	 * Ò»Ğ©Íâ¹Û¿ÉÄÜÃ»ÓĞÊµÏÖÊó±ê¾­¹ıÊ±µÄĞ§¹û£»ËüÃÇ»áºöÂÔÕâ¸öÊôĞÔ¡£
-	 * @param b Èç¹ûÎª <code>true</code>£¬ Êó±ê¾­¹ıÊ±»æÖÆĞ§¹û¡£
+	 * è®¾ç½® <code>rolloverEnabled</code> å±æ€§ï¼Œåªæœ‰å½“å®ƒè®¾ç½®æˆ
+	 * <code>true</code> çš„æ—¶å€™é¼ æ ‡ç»è¿‡æ•ˆæœæ‰èƒ½å‘ç”Ÿã€‚
+	 * <code>rolloverEnabled</code> é»˜è®¤å±æ€§ä¸º <code>false</code>ã€‚
+	 * ä¸€äº›å¤–è§‚å¯èƒ½æ²¡æœ‰å®ç°é¼ æ ‡ç»è¿‡æ—¶çš„æ•ˆæœï¼›å®ƒä»¬ä¼šå¿½ç•¥è¿™ä¸ªå±æ€§ã€‚
+	 * @param b å¦‚æœä¸º <code>true</code>ï¼Œ é¼ æ ‡ç»è¿‡æ—¶ç»˜åˆ¶æ•ˆæœã€‚
      * @see #isRollOverEnabled()
      */
     public function setRollOverEnabled(b:Boolean):void{
@@ -329,9 +329,9 @@ public class AbstractButton extends Component{
     }
     
     /**
-	 * µÃµ½ <code>rolloverEnabled</code> ÊôĞÔ¡£
+	 * å¾—åˆ° <code>rolloverEnabled</code> å±æ€§ã€‚
 	 * 
-	 * @return <code>rolloverEnabled</code> ÊôĞÔÖµ
+	 * @return <code>rolloverEnabled</code> å±æ€§å€¼
      * @see #setRollOverEnabled()
      */    
     public function isRollOverEnabled():Boolean{
@@ -339,12 +339,12 @@ public class AbstractButton extends Component{
     }
 
 	/**
-	 * ÉèÖÃ°´Å¥±ß¿òºÍ±êÇ©Ö®¼äµÄ¿Õ°×¡£½«¸Ã¿Õ°×ÉèÖÃÎª <code>null</code> »áÔì³É°´Å¥Ê¹ÓÃÄ¬ÈÏ¿Õ°×¡£
-	 * °´Å¥µÄÄ¬ÈÏ <code>Border</code> ¶ÔÏó½«Ê¹ÓÃ¸ÃÖµÀ´´´½¨ÊÊµ±µÄ¿Õ°×¡£
-	 * ²»¹ı£¬Èç¹ûÔÚ°´Å¥ÉÏÉèÖÃ·ÇÄ¬ÈÏ±ß¿ò£¬
-	 * ÔòÓÉ <code>Border</code> ¶ÔÏó¸ºÔğ´´½¨ÊÊµ±µÄ¿Õ°×£¨·ñÔò´ËÊôĞÔ½«±»ºöÂÔ£©¡£
+	 * è®¾ç½®æŒ‰é’®è¾¹æ¡†å’Œæ ‡ç­¾ä¹‹é—´çš„ç©ºç™½ã€‚å°†è¯¥ç©ºç™½è®¾ç½®ä¸º <code>null</code> ä¼šé€ æˆæŒ‰é’®ä½¿ç”¨é»˜è®¤ç©ºç™½ã€‚
+	 * æŒ‰é’®çš„é»˜è®¤ <code>Border</code> å¯¹è±¡å°†ä½¿ç”¨è¯¥å€¼æ¥åˆ›å»ºé€‚å½“çš„ç©ºç™½ã€‚
+	 * ä¸è¿‡ï¼Œå¦‚æœåœ¨æŒ‰é’®ä¸Šè®¾ç½®éé»˜è®¤è¾¹æ¡†ï¼Œ
+	 * åˆ™ç”± <code>Border</code> å¯¹è±¡è´Ÿè´£åˆ›å»ºé€‚å½“çš„ç©ºç™½ï¼ˆå¦åˆ™æ­¤å±æ€§å°†è¢«å¿½ç•¥ï¼‰ã€‚
 	 * 
-	 * @param m ±ß¿òºÍ±êÇ©Ö®¼äµÄ¿Õ°×
+	 * @param m è¾¹æ¡†å’Œæ ‡ç­¾ä¹‹é—´çš„ç©ºç™½
 	 */
 	public function setMargin(m:Insets):void{
         // Cache the old margin if it comes from the UI
@@ -381,8 +381,8 @@ public class AbstractButton extends Component{
 	}
 	
 	/**
-	 * °ü×°Ò»¸öSimpleButton×÷Îª°´Å¥µÄÍâ¹Û¡£
-	 * @param btn ±»°ü×°µÄSimpleButton¡£
+	 * åŒ…è£…ä¸€ä¸ªSimpleButtonä½œä¸ºæŒ‰é’®çš„å¤–è§‚ã€‚
+	 * @param btn è¢«åŒ…è£…çš„SimpleButtonã€‚
 	 */
 	public function wrapSimpleButton(btn:SimpleButton):void{
 		setShiftOffset(0);
@@ -394,13 +394,13 @@ public class AbstractButton extends Component{
 	}
 		
 	/**
-	 * ÔÚÉèÖÃÎÄ±¾µÄÊ±ºòÔÚÎÄ±¾ÖĞ¼ÓÉÏÒ»¸ö¡°&¡±£¨Öú¼ÇĞŞÊÎ·û£©¡£±ÈÈç£¬Èç¹ûÄãÉèÖÃÎÄ±¾
-	 * µÄÄÚÈİÎª¡°&File¡±£¬ÏÔÊ¾µÄÊ±ºòÊÇ¡°File¡±£¬¡°F¡±¾ÍÊÇÖú¼Ç·û¡£
+	 * åœ¨è®¾ç½®æ–‡æœ¬çš„æ—¶å€™åœ¨æ–‡æœ¬ä¸­åŠ ä¸Šä¸€ä¸ªâ€œ&â€ï¼ˆåŠ©è®°ä¿®é¥°ç¬¦ï¼‰ã€‚æ¯”å¦‚ï¼Œå¦‚æœä½ è®¾ç½®æ–‡æœ¬
+	 * çš„å†…å®¹ä¸ºâ€œ&Fileâ€ï¼Œæ˜¾ç¤ºçš„æ—¶å€™æ˜¯â€œFileâ€ï¼Œâ€œFâ€å°±æ˜¯åŠ©è®°ç¬¦ã€‚
 	 * <p>
-	 * Õâ¸ö·½·¨»áÊ¹µÃ°´Å¥ÖØ»­£¬µ«ÊÇ²»»áÖØĞÂµ÷Õû²¼¾Ö£¬ËùÒÔÈç¹ûÄãÎªÎÄ±¾ÉèÖÃÁË²»Í¬µÄ×ÖÌå´óĞ¡£¬
-	 * ÄãĞèÒªµ÷ÓÃ <code>revalidate()</code> À´ÖØĞÂ½øĞĞ²¼¾Öµ÷Õû¡£
+	 * è¿™ä¸ªæ–¹æ³•ä¼šä½¿å¾—æŒ‰é’®é‡ç”»ï¼Œä½†æ˜¯ä¸ä¼šé‡æ–°è°ƒæ•´å¸ƒå±€ï¼Œæ‰€ä»¥å¦‚æœä½ ä¸ºæ–‡æœ¬è®¾ç½®äº†ä¸åŒçš„å­—ä½“å¤§å°ï¼Œ
+	 * ä½ éœ€è¦è°ƒç”¨ <code>revalidate()</code> æ¥é‡æ–°è¿›è¡Œå¸ƒå±€è°ƒæ•´ã€‚
 	 * </p>
-	 * @param text °´Å¥µÄÎÄ±¾
+	 * @param text æŒ‰é’®çš„æ–‡æœ¬
 	 * @see #getDisplayText()
 	 * @see #getMnemonic()
 	 * @see #getMnemonicIndex()
@@ -444,8 +444,8 @@ public class AbstractButton extends Component{
 	}
 	
 	/**
-	 * ·µ»ØÎÄ±¾£¬°üº¬¡°&¡±£¨Öú¼ÇĞŞÊÎ·û£©¡£
-	 * @return ÎÄ±¾¡£
+	 * è¿”å›æ–‡æœ¬ï¼ŒåŒ…å«â€œ&â€ï¼ˆåŠ©è®°ä¿®é¥°ç¬¦ï¼‰ã€‚
+	 * @return æ–‡æœ¬ã€‚
 	 * @see #getDisplayText()
 	 */
 	public function getText():String{
@@ -453,16 +453,16 @@ public class AbstractButton extends Component{
 	}
 	
 	/**
-	 * ·µ»ØÏÔÊ¾ÎÄ±¾£¬Õâ¸öÎÄ±¾²»°üº¬¡°&¡±£¨Öú¼ÇĞŞÊÎ·û£©¡£
-	 * @return ÏÔÊ¾µÄÎÄ±¾¡£
+	 * è¿”å›æ˜¾ç¤ºæ–‡æœ¬ï¼Œè¿™ä¸ªæ–‡æœ¬ä¸åŒ…å«â€œ&â€ï¼ˆåŠ©è®°ä¿®é¥°ç¬¦ï¼‰ã€‚
+	 * @return æ˜¾ç¤ºçš„æ–‡æœ¬ã€‚
 	 */
 	public function getDisplayText():String{
 		return displayText;	
 	}
 	
 	/**
-	 * ·µ»ØÖú¼Ç·ûÔÚÏÔÊ¾ÎÄ±¾ÖĞËùÔÚ×ø±ê£¬-1±íÊ¾Ã»ÓĞÖú¼Ç·û¡£
-	 * @return Öú¼Ç·û×ø±ê»òÕß -1.
+	 * è¿”å›åŠ©è®°ç¬¦åœ¨æ˜¾ç¤ºæ–‡æœ¬ä¸­æ‰€åœ¨åæ ‡ï¼Œ-1è¡¨ç¤ºæ²¡æœ‰åŠ©è®°ç¬¦ã€‚
+	 * @return åŠ©è®°ç¬¦åæ ‡æˆ–è€… -1.
 	 * @see #getDisplayText()
 	 */
 	public function getMnemonicIndex():int{
@@ -470,8 +470,8 @@ public class AbstractButton extends Component{
 	}
 	
 	/**
-	 * ·µ»ØÕâ¸ö°´Å¥µÄ¼üÅÌÖú¼Ç·û£¬-1±íÊ¾Ã»ÓĞÖú¼Ç·û¡£
-	 * @return ¼üÅÌÖú¼Ç·û»ò-1¡£
+	 * è¿”å›è¿™ä¸ªæŒ‰é’®çš„é”®ç›˜åŠ©è®°ç¬¦ï¼Œ-1è¡¨ç¤ºæ²¡æœ‰åŠ©è®°ç¬¦ã€‚
+	 * @return é”®ç›˜åŠ©è®°ç¬¦æˆ–-1ã€‚
 	 */
 	public function getMnemonic():int{
 		return mnemonic;
@@ -491,12 +491,12 @@ public class AbstractButton extends Component{
 	}
 	
 	/**
-	 * Îª°´Å¥ÉèÖÃÄ¬ÈÏµÄÍ¼±ê¡£
+	 * ä¸ºæŒ‰é’®è®¾ç½®é»˜è®¤çš„å›¾æ ‡ã€‚
 	 * <p>
-	 * µ÷ÓÃÕâ¸ö·½·¨»áÊ¹µÃ°´Å¥ÖØ»­£¬µ«ÊÇ²»»áÖØĞÂµ÷Õû²¼¾Ö£¬ËùÒÔÈç¹ûÄãÉèÖÃÁËÒ»¸ö²»Í¬´óĞ¡
-	 * µÄÍ¼±ê£¬ÄãĞèÒªµ÷ÓÃ <code>revalidate()</code> À´µ÷Õû²¼¾Ö¡£
+	 * è°ƒç”¨è¿™ä¸ªæ–¹æ³•ä¼šä½¿å¾—æŒ‰é’®é‡ç”»ï¼Œä½†æ˜¯ä¸ä¼šé‡æ–°è°ƒæ•´å¸ƒå±€ï¼Œæ‰€ä»¥å¦‚æœä½ è®¾ç½®äº†ä¸€ä¸ªä¸åŒå¤§å°
+	 * çš„å›¾æ ‡ï¼Œä½ éœ€è¦è°ƒç”¨ <code>revalidate()</code> æ¥è°ƒæ•´å¸ƒå±€ã€‚
 	 * </p>
-	 * @param defaultIcon °´Å¥Ä¬ÈÏµÄÍ¼±ê¡£
+	 * @param defaultIcon æŒ‰é’®é»˜è®¤çš„å›¾æ ‡ã€‚
 	 */
 	public function setIcon(defaultIcon:Icon):void{
 		if(this.defaultIcon != defaultIcon){
@@ -513,8 +513,8 @@ public class AbstractButton extends Component{
 	}
     
     /**
-	 * ·µ»Ø°´Å¥°´ÏÂÊ±µÄÍ¼±ê¡£
-	 * @return  <code>pressedIcon</code> ÊôĞÔ
+	 * è¿”å›æŒ‰é’®æŒ‰ä¸‹æ—¶çš„å›¾æ ‡ã€‚
+	 * @return  <code>pressedIcon</code> å±æ€§
      * @see #setPressedIcon()
      */
     public function getPressedIcon():Icon {
@@ -522,8 +522,8 @@ public class AbstractButton extends Component{
     }
     
     /**
-	 * ÉèÖÃ°´Å¥°´ÏÂÊ±µÄÍ¼±ê¡£
-	 * @param pressedIcon Õâ¸öÍ¼±êÓÃ×÷Îª¡°°´ÏÂ¡±Ê±µÄÍ¼Æ¬¡£
+	 * è®¾ç½®æŒ‰é’®æŒ‰ä¸‹æ—¶çš„å›¾æ ‡ã€‚
+	 * @param pressedIcon è¿™ä¸ªå›¾æ ‡ç”¨ä½œä¸ºâ€œæŒ‰ä¸‹â€æ—¶çš„å›¾ç‰‡ã€‚
      * @see #getPressedIcon()
      */
     public function setPressedIcon(pressedIcon:Icon):void {
@@ -539,8 +539,8 @@ public class AbstractButton extends Component{
     }
 
     /**
-	 * ·µ»Ø°´Å¥±»Ñ¡ÖĞÊ±µÄÍ¼±ê¡£
-	 * @return  <code>selectedIcon</code> ÊôĞÔ
+	 * è¿”å›æŒ‰é’®è¢«é€‰ä¸­æ—¶çš„å›¾æ ‡ã€‚
+	 * @return  <code>selectedIcon</code> å±æ€§
      * @see #setSelectedIcon()
      */
     public function getSelectedIcon():Icon {
@@ -548,8 +548,8 @@ public class AbstractButton extends Component{
     }
     
     /**
-	 * ÉèÖÃ°´Å¥Ñ¡ÖĞÊ±µÄÍ¼±ê¡£
-	 * @param selectedIcon Õâ¸öÍ¼±êÓÃ×÷Îª¡°Ñ¡ÖĞ¡±Ê±µÄÍ¼Æ¬¡£
+	 * è®¾ç½®æŒ‰é’®é€‰ä¸­æ—¶çš„å›¾æ ‡ã€‚
+	 * @param selectedIcon è¿™ä¸ªå›¾æ ‡ç”¨ä½œä¸ºâ€œé€‰ä¸­â€æ—¶çš„å›¾ç‰‡ã€‚
      * @see #getSelectedIcon()
      */
     public function setSelectedIcon(selectedIcon:Icon):void {
@@ -565,8 +565,8 @@ public class AbstractButton extends Component{
     }
 
     /**
-	 * ·µ»ØÊó±êÒÆÉÏÈ¥Ê±µÄÍ¼±ê¡£
-	 * @return  <code>rolloverIcon</code> ÊôĞÔ
+	 * è¿”å›é¼ æ ‡ç§»ä¸Šå»æ—¶çš„å›¾æ ‡ã€‚
+	 * @return  <code>rolloverIcon</code> å±æ€§
      * @see #setRollOverIcon()
      */
     public function getRollOverIcon():Icon {
@@ -574,8 +574,8 @@ public class AbstractButton extends Component{
     }
     
     /**
-	 * ÉèÖÃÊó±êÒÆÉÏÈ¥Ê±µÄÍ¼±ê¡£
-	 * @param rolloverIcon Õâ¸öÍ¼±êÓÃ×÷Îª¡°Êó±êÒÆÉÏ¡±Ê±µÄÍ¼Æ¬¡£
+	 * è®¾ç½®é¼ æ ‡ç§»ä¸Šå»æ—¶çš„å›¾æ ‡ã€‚
+	 * @param rolloverIcon è¿™ä¸ªå›¾æ ‡ç”¨ä½œä¸ºâ€œé¼ æ ‡ç§»ä¸Šâ€æ—¶çš„å›¾ç‰‡ã€‚
      * @see #getRollOverIcon()
      */
     public function setRollOverIcon(rolloverIcon:Icon):void {
@@ -593,8 +593,8 @@ public class AbstractButton extends Component{
     }
     
     /**
-	 * ·µ»Ø°´Å¥±»Ñ¡ÖĞÊ±Êó±êÒÆÉÏºóµÄÍ¼±ê¡£
-	 * @return  <code>rolloverSelectedIcon</code> ÊôĞÔ
+	 * è¿”å›æŒ‰é’®è¢«é€‰ä¸­æ—¶é¼ æ ‡ç§»ä¸Šåçš„å›¾æ ‡ã€‚
+	 * @return  <code>rolloverSelectedIcon</code> å±æ€§
      * @see #setRollOverSelectedIcon()
      */
     public function getRollOverSelectedIcon():Icon {
@@ -602,8 +602,8 @@ public class AbstractButton extends Component{
     }
     
     /**
-	 * ÉèÖÃ°´Å¥±»Ñ¡ÖĞÊ±Êó±êÒÆÉÏºóµÄÍ¼±ê¡£
-	 * @param rolloverSelectedIcon Õâ¸öÍ¼±êÓÃ×÷Îª¡°±»Ñ¡ÖĞºóÊó±êÒÆÉÏ¡±Ê±µÄÍ¼Æ¬¡£
+	 * è®¾ç½®æŒ‰é’®è¢«é€‰ä¸­æ—¶é¼ æ ‡ç§»ä¸Šåçš„å›¾æ ‡ã€‚
+	 * @param rolloverSelectedIcon è¿™ä¸ªå›¾æ ‡ç”¨ä½œä¸ºâ€œè¢«é€‰ä¸­åé¼ æ ‡ç§»ä¸Šâ€æ—¶çš„å›¾ç‰‡ã€‚
      * @see #getRollOverSelectedIcon()
      */
     public function setRollOverSelectedIcon(rolloverSelectedIcon:Icon):void {
@@ -620,11 +620,11 @@ public class AbstractButton extends Component{
     }
     
     /**
-	 * ·µ»Ø°´Å¥½ûÓÃÊ±µÄÍ¼±ê£¬Èç¹ûÃ»ÓĞÉèÖÃ´ËÍ¼±ê£¬
-	 * °´Å¥»á¸ù¾İÄ¬ÈÏµÄÍ¼±ê¹¹½¨Ò»¸ö¡£
+	 * è¿”å›æŒ‰é’®ç¦ç”¨æ—¶çš„å›¾æ ‡ï¼Œå¦‚æœæ²¡æœ‰è®¾ç½®æ­¤å›¾æ ‡ï¼Œ
+	 * æŒ‰é’®ä¼šæ ¹æ®é»˜è®¤çš„å›¾æ ‡æ„å»ºä¸€ä¸ªã€‚
 	 * <p>
-	 * ½ûÓÃÊ±µÄÍ¼±ê»á±»L&F´´½¨£¨Èç¹ûĞèÒªµÄ»°£©¡£
-	 * @return  <code>disabledIcon</code> ÊôĞÔ
+	 * ç¦ç”¨æ—¶çš„å›¾æ ‡ä¼šè¢«L&Fåˆ›å»ºï¼ˆå¦‚æœéœ€è¦çš„è¯ï¼‰ã€‚
+	 * @return  <code>disabledIcon</code> å±æ€§
      * @see #getPressedIcon()
      * @see #setDisabledIcon()
      */
@@ -640,8 +640,8 @@ public class AbstractButton extends Component{
     }
     
     /**
-	 * ÉèÖÃ°´Å¥½ûÓÃÊ±µÄÍ¼±ê¡£
-	 * @param disabledIcon Õâ¸öÍ¼±êÔÚ°´Å¥×÷Îª½ûÓÃÊ±µÄÍ¼Æ¬¡£
+	 * è®¾ç½®æŒ‰é’®ç¦ç”¨æ—¶çš„å›¾æ ‡ã€‚
+	 * @param disabledIcon è¿™ä¸ªå›¾æ ‡åœ¨æŒ‰é’®ä½œä¸ºç¦ç”¨æ—¶çš„å›¾ç‰‡ã€‚
      * @see #getDisabledIcon()
      */
     public function setDisabledIcon(disabledIcon:Icon):void {
@@ -657,11 +657,11 @@ public class AbstractButton extends Component{
     }
     
     /**
-	 * ·µ»Ø°´Å¥ÔÚ½ûÓÃÇÒ±»Ñ¡ÖĞÊ±µÄÍ¼±ê¡£Èç¹ûÃ»ÓĞÉèÖÃ´ËÍ¼±ê£¬°´Å¥½«»á¸ù¾İ
-	 * Ñ¡ÖĞÊ±µÄÍ¼±êÀ´¹¹½¨Ò»¸ö¡£
+	 * è¿”å›æŒ‰é’®åœ¨ç¦ç”¨ä¸”è¢«é€‰ä¸­æ—¶çš„å›¾æ ‡ã€‚å¦‚æœæ²¡æœ‰è®¾ç½®æ­¤å›¾æ ‡ï¼ŒæŒ‰é’®å°†ä¼šæ ¹æ®
+	 * é€‰ä¸­æ—¶çš„å›¾æ ‡æ¥æ„å»ºä¸€ä¸ªã€‚
 	 * <p>
-	 * ½ûÓÃÇÒ±»Ñ¡ÖĞÊ±µÄÍ¼±ê»á±»L&F´´½¨¡££¨Èç¹ûĞèÒªµÄ»°£©
-	 * @return  <code>disabledSelectedIcon</code> ÊôĞÔ
+	 * ç¦ç”¨ä¸”è¢«é€‰ä¸­æ—¶çš„å›¾æ ‡ä¼šè¢«L&Fåˆ›å»ºã€‚ï¼ˆå¦‚æœéœ€è¦çš„è¯ï¼‰
+	 * @return  <code>disabledSelectedIcon</code> å±æ€§
      * @see #getPressedIcon()
      * @see #setDisabledIcon()
      */
@@ -678,8 +678,8 @@ public class AbstractButton extends Component{
     }
 
     /**
-	 * ÉèÖÃ°´Å¥½ûÓÃ²¢±»Ñ¡ÖĞÊ±µÄÍ¼±ê¡£
-	 * @param disabledSelectedIcon ´Ë°´Å¥±»ÓÃ×÷Îª°´Å¥½ûÓÃ²¢±»Ñ¡ÖĞÊ±µÄÍ¼Æ¬¡£
+	 * è®¾ç½®æŒ‰é’®ç¦ç”¨å¹¶è¢«é€‰ä¸­æ—¶çš„å›¾æ ‡ã€‚
+	 * @param disabledSelectedIcon æ­¤æŒ‰é’®è¢«ç”¨ä½œä¸ºæŒ‰é’®ç¦ç”¨å¹¶è¢«é€‰ä¸­æ—¶çš„å›¾ç‰‡ã€‚
      * @see #getDisabledSelectedIcon()
      */
     public function setDisabledSelectedIcon(disabledSelectedIcon:Icon):void {
@@ -696,10 +696,10 @@ public class AbstractButton extends Component{
     }
 
     /**
-	 * ·µ»ØÎÄ±¾ºÍÍ¼±êÔÚ´¹Ö±·½ÏòÉÏµÄ¶ÔÆë·½Ê½¡£
-	 * @return  <code>verticalAlignment</code> ÊôĞÔ£¬
+	 * è¿”å›æ–‡æœ¬å’Œå›¾æ ‡åœ¨å‚ç›´æ–¹å‘ä¸Šçš„å¯¹é½æ–¹å¼ã€‚
+	 * @return  <code>verticalAlignment</code> å±æ€§ï¼Œ
      * <ul>
-     * <li>AsWingConstants.CENTER £¨Ä¬ÈÏ£©
+     * <li>AsWingConstants.CENTER ï¼ˆé»˜è®¤ï¼‰
      * <li>AsWingConstants.TOP
      * <li>AsWingConstants.BOTTOM
      * </ul>
@@ -709,10 +709,10 @@ public class AbstractButton extends Component{
     }
     
     /**
-	 * ÉèÖÃÎÄ±¾ºÍÍ¼±êµÄ´¹Ö±¶ÔÆë·½Ê½¡£
-	 * @param alignment  ÎªÒÔÏÂÕâĞ©ÖµÖ®Ò»£º
+	 * è®¾ç½®æ–‡æœ¬å’Œå›¾æ ‡çš„å‚ç›´å¯¹é½æ–¹å¼ã€‚
+	 * @param alignment  ä¸ºä»¥ä¸‹è¿™äº›å€¼ä¹‹ä¸€ï¼š
      * <ul>
-     * <li>AsWingConstants.CENTER £¨Ä¬ÈÏ£©
+     * <li>AsWingConstants.CENTER ï¼ˆé»˜è®¤ï¼‰
      * <li>AsWingConstants.TOP
      * <li>AsWingConstants.BOTTOM
      * </ul>
@@ -727,11 +727,11 @@ public class AbstractButton extends Component{
     }
     
     /**
-	 * ·µ»ØÍ¼±êºÍÎÄ±¾µÄË®Æ½¶ÔÆë·½Ê½¡£
-	 * @return  <code>horizontalAlignment</code> ÊôĞÔ,
-     *		ÎªÒÔÏÂÕâĞ©ÖµÖ®Ò»£º
+	 * è¿”å›å›¾æ ‡å’Œæ–‡æœ¬çš„æ°´å¹³å¯¹é½æ–¹å¼ã€‚
+	 * @return  <code>horizontalAlignment</code> å±æ€§,
+     *		ä¸ºä»¥ä¸‹è¿™äº›å€¼ä¹‹ä¸€ï¼š
      * <ul>
-     * <li>AsWingConstants.RIGHT £¨Ä¬ÈÏ£©
+     * <li>AsWingConstants.RIGHT ï¼ˆé»˜è®¤ï¼‰
      * <li>AsWingConstants.LEFT
      * <li>AsWingConstants.CENTER
      * </ul>
@@ -741,10 +741,10 @@ public class AbstractButton extends Component{
     }
     
     /**
-	 * ÉèÖÃÍ¼±êºÍÎÄ±¾µÄË®Æ½¶ÔÆë·½Ê½¡£
-	 * @param alignment  ÎªÒÔÏÂÕâĞ©ÖµÖ®Ò»£º
+	 * è®¾ç½®å›¾æ ‡å’Œæ–‡æœ¬çš„æ°´å¹³å¯¹é½æ–¹å¼ã€‚
+	 * @param alignment  ä¸ºä»¥ä¸‹è¿™äº›å€¼ä¹‹ä¸€ï¼š
      * <ul>
-     * <li>AsWingConstants.RIGHT £¨Ä¬ÈÏ£©
+     * <li>AsWingConstants.RIGHT ï¼ˆé»˜è®¤ï¼‰
      * <li>AsWingConstants.LEFT
      * <li>AsWingConstants.CENTER
      * </ul>
@@ -760,11 +760,11 @@ public class AbstractButton extends Component{
 
     
     /**
-	 * ·µ»ØÎÄ±¾Ïà¶ÔÓÚÍ¼±êÔÚ´¹Ö±·½ÏòÉÏµÄÎ»ÖÃ¡£
-	 * @return  <code>verticalTextPosition</code> ÊôĞÔ, 
-     *		ÎªÒÔÏÂÕâĞ©ÖµÖ®Ò»£º
+	 * è¿”å›æ–‡æœ¬ç›¸å¯¹äºå›¾æ ‡åœ¨å‚ç›´æ–¹å‘ä¸Šçš„ä½ç½®ã€‚
+	 * @return  <code>verticalTextPosition</code> å±æ€§, 
+     *		ä¸ºä»¥ä¸‹è¿™äº›å€¼ä¹‹ä¸€ï¼š
      * <ul>
-     * <li>AsWingConstants.CENTER  £¨Ä¬ÈÏ£©
+     * <li>AsWingConstants.CENTER  ï¼ˆé»˜è®¤ï¼‰
      * <li>AsWingConstants.TOP
      * <li>AsWingConstants.BOTTOM
      * </ul>
@@ -774,10 +774,10 @@ public class AbstractButton extends Component{
     }
     
     /**
-	 * ÉèÖÃÎÄ±¾Ïà¶ÔÓÚÍ¼±êÔÚ´¹Ö±·½ÏòÉÏµÄÎ»ÖÃ¡£
-	 * @param alignment  ÎªÒ»Ğ©ÕâĞ©ÖµÖ®Ò»£º
+	 * è®¾ç½®æ–‡æœ¬ç›¸å¯¹äºå›¾æ ‡åœ¨å‚ç›´æ–¹å‘ä¸Šçš„ä½ç½®ã€‚
+	 * @param alignment  ä¸ºä¸€äº›è¿™äº›å€¼ä¹‹ä¸€ï¼š
      * <ul>
-     * <li>AsWingConstants.CENTER £¨Ä¬ÈÏ£©
+     * <li>AsWingConstants.CENTER ï¼ˆé»˜è®¤ï¼‰
      * <li>AsWingConstants.TOP
      * <li>AsWingConstants.BOTTOM
      * </ul>
@@ -793,11 +793,11 @@ public class AbstractButton extends Component{
     }
     
     /**
-	 * ·µ»ØÎÄ±¾Ïà¶ÔÓÚÍ¼±êÔÚË®Æ½·½ÏòÉÏµÄÎ»ÖÃ¡£
-     * @return  <code>horizontalTextPosition</code> ÊôĞÔ, 
-     * 		ÎªÒÔÏÂÕâĞ©ÖµÖ®Ò»£º
+	 * è¿”å›æ–‡æœ¬ç›¸å¯¹äºå›¾æ ‡åœ¨æ°´å¹³æ–¹å‘ä¸Šçš„ä½ç½®ã€‚
+     * @return  <code>horizontalTextPosition</code> å±æ€§, 
+     * 		ä¸ºä»¥ä¸‹è¿™äº›å€¼ä¹‹ä¸€ï¼š
      * <ul>
-     * <li>AsWingConstants.RIGHT £¨Ä¬ÈÏ£©
+     * <li>AsWingConstants.RIGHT ï¼ˆé»˜è®¤ï¼‰
      * <li>AsWingConstants.LEFT
      * <li>AsWingConstants.CENTER
      * </ul>
@@ -807,10 +807,10 @@ public class AbstractButton extends Component{
     }
     
     /**
-	 * ÉèÖÃÎÄ±¾Ïà¶ÔÓÚÍ¼±êÔÚË®Æ½·½ÏòÉÏµÄÎ»ÖÃ¡£
-	 * @param textPosition ÎªÒÔÏÂÕâĞ©ÖµÖ®Ò»£º
+	 * è®¾ç½®æ–‡æœ¬ç›¸å¯¹äºå›¾æ ‡åœ¨æ°´å¹³æ–¹å‘ä¸Šçš„ä½ç½®ã€‚
+	 * @param textPosition ä¸ºä»¥ä¸‹è¿™äº›å€¼ä¹‹ä¸€ï¼š
      * <ul>
-     * <li>AsWingConstants.RIGHT £¨Ä¬ÈÏ£©
+     * <li>AsWingConstants.RIGHT ï¼ˆé»˜è®¤ï¼‰
      * <li>AsWingConstants.LEFT
      * <li>AsWingConstants.CENTER
      * </ul>
@@ -826,8 +826,8 @@ public class AbstractButton extends Component{
     }
     
     /**
-	 * ·µ»Ø°´Å¥ÖĞÎÄ±¾ÓëÍ¼±êÖ®¼äµÄ¿Õ°×ÊıÁ¿¡£
-	 * @return ÎÄ±¾ÓëÍ¼±êÖ®¼äµÄÏñËØÖµ¡£
+	 * è¿”å›æŒ‰é’®ä¸­æ–‡æœ¬ä¸å›¾æ ‡ä¹‹é—´çš„ç©ºç™½æ•°é‡ã€‚
+	 * @return æ–‡æœ¬ä¸å›¾æ ‡ä¹‹é—´çš„åƒç´ å€¼ã€‚
      * @see #setIconTextGap()
      */
     public function getIconTextGap():int {
@@ -835,9 +835,9 @@ public class AbstractButton extends Component{
     }
 
     /**
-	 * Èç¹ûÍ¼±êÓëÎÄ±¾ÊôĞÔ¶¼ÉèÖÃ¹ıµÄ»°£¬Õâ¸öÊôĞÔ¶¨ÒåËüÃÇÖ®¼äµÄ¿Õ°×²¿·Ö¡£
+	 * å¦‚æœå›¾æ ‡ä¸æ–‡æœ¬å±æ€§éƒ½è®¾ç½®è¿‡çš„è¯ï¼Œè¿™ä¸ªå±æ€§å®šä¹‰å®ƒä»¬ä¹‹é—´çš„ç©ºç™½éƒ¨åˆ†ã€‚
 	 * <p>
-	 * Õâ¸öÊôĞÔµÄÄ¬ÈÏÖµÊÇ4¸öÏñËØ¡£
+	 * è¿™ä¸ªå±æ€§çš„é»˜è®¤å€¼æ˜¯4ä¸ªåƒç´ ã€‚
 	 * 
 	 * @see #getIconTextGap()
      */
@@ -851,16 +851,16 @@ public class AbstractButton extends Component{
     }
     
     /**
-	 * ·µ»Øµ±Êó±ê°´ÏÂÊ±£¬°´Å¥ÖĞÎÄ±¾ÓëÍ¼±ê³öÏÖÎ»ÖÃÆ«ÒÆÁ¿¡£
+	 * è¿”å›å½“é¼ æ ‡æŒ‰ä¸‹æ—¶ï¼ŒæŒ‰é’®ä¸­æ–‡æœ¬ä¸å›¾æ ‡å‡ºç°ä½ç½®åç§»é‡ã€‚
 	 * 
-	 * @return Êó±ê°´ÏÂÊ±£¬°´Å¥ÖĞÎÄ±¾ÓëÍ¼±ê³öÏÖÎ»ÖÃÆ«ÒÆÁ¿¡£
+	 * @return é¼ æ ‡æŒ‰ä¸‹æ—¶ï¼ŒæŒ‰é’®ä¸­æ–‡æœ¬ä¸å›¾æ ‡å‡ºç°ä½ç½®åç§»é‡ã€‚
      */
     public function getShiftOffset():int {
         return shiftOffset;
     }
 
     /**
-	 * ÉèÖÃÊó±ê°´ÏÂÊ±£¬°´Å¥ÖĞÎÄ±¾ÓëÍ¼±ê³öÏÖÎ»ÖÃÆ«ÒÆÁ¿¡£
+	 * è®¾ç½®é¼ æ ‡æŒ‰ä¸‹æ—¶ï¼ŒæŒ‰é’®ä¸­æ–‡æœ¬ä¸å›¾æ ‡å‡ºç°ä½ç½®åç§»é‡ã€‚
      */
     public function setShiftOffset(shiftOffset:int):void {
         var oldValue:int = this.shiftOffset;
@@ -873,14 +873,14 @@ public class AbstractButton extends Component{
     }
     
     /**
-	 * ·µ»ØÊÇ·ñÓÉÓÃ»§À´ÉèÖÃÁËshiftOffset¡£Èç¹û·µ»ØtrueµÄ»°LAF½«²»»á¸Ä±äshiftOffset¡£
+	 * è¿”å›æ˜¯å¦ç”±ç”¨æˆ·æ¥è®¾ç½®äº†shiftOffsetã€‚å¦‚æœè¿”å›trueçš„è¯LAFå°†ä¸ä¼šæ”¹å˜shiftOffsetã€‚
      */
     public function isShiftOffsetSet():Boolean{
     	return shiftOffsetSet;
     }
     
    /**
-	* ÉèÖÃÊÇ·ñÓÉÓÃ»§À´ÉèÖÃshiftOffset¡£Èç¹ûÎªtrue LAF½«²»»á¸Ä±äshiftOffset¡£
+	* è®¾ç½®æ˜¯å¦ç”±ç”¨æˆ·æ¥è®¾ç½®shiftOffsetã€‚å¦‚æœä¸ºtrue LAFå°†ä¸ä¼šæ”¹å˜shiftOffsetã€‚
     */
     public function setShiftOffsetSet(b:Boolean):void{
     	shiftOffsetSet = b;
