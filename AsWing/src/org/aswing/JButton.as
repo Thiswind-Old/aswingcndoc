@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  Copyright aswing.org, see the LICENCE.txt.
 */
 
@@ -9,7 +9,7 @@ import org.aswing.plaf.basic.BasicButtonUI;
 import flash.display.SimpleButton;
 
 /**
- * °´Å¥µÄÒ»¸öÊµÏÖ¡£
+ * æŒ‰é’®çš„ä¸€ä¸ªå®žçŽ°ã€‚
  * An implementation of a "push" button.
  * @author iiley
  */
