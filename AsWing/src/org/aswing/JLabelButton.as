@@ -7,6 +7,7 @@ package org.aswing{
 import org.aswing.plaf.basic.BasicLabelButtonUI;
 
 /**
+ * 一个模仿超链接的按钮。
  * A button that performances like a hyper link text.
  * @author iiley
  */
@@ -16,9 +17,13 @@ public class JLabelButton extends AbstractButton{
 	protected var pressedColor:ASColor;
 	
     /**
+     * 创建一个文字按钮。
      * Creates a label button.
+     * @param text 文字。
      * @param text the text.
+     * @param icon 标志。
      * @param icon the icon.
+     * @param horizontalAlignment 水平布局，默认是 <cide>CENTER</cide>
      * @param horizontalAlignment the horizontal alignment, default is <code>CENTER</code>
      */	
 	public function JLabelButton(text:String="", icon:Icon=null, horizontalAlignment:int=0){
@@ -41,7 +46,9 @@ public class JLabelButton extends AbstractButton{
 	}
 	
 	/**
+     * 设置当鼠标移到按钮上时，文字的颜色。
 	 * Sets the color for text rollover state.
+     * @param c 颜色
 	 * @param c the color.
 	 */
 	public function setRollOverColor(c:ASColor):void{
@@ -52,15 +59,18 @@ public class JLabelButton extends AbstractButton{
 	}
 	
 	/**
+     * 得到鼠标移到按钮上时，文字的颜色。
 	 * Gets the color for text rollover state.
-	 * @param c the color.
+	 * @return 颜色。
 	 */	
 	public function getRollOverColor():ASColor{
 		return rolloverColor;
 	}	
 	
 	/**
+     * 设置当按钮被选中或鼠标按下的时候，文字的颜色。
 	 * Sets the color for text pressed/selected state.
+     * @param c 颜色。
 	 * @param c the color.
 	 */	
 	public function setPressedColor(c:ASColor):void{
@@ -71,8 +81,9 @@ public class JLabelButton extends AbstractButton{
 	}
 	
 	/**
+     * 得到当按钮被选中或鼠标按下的时候，文字的颜色
 	 * Gets the color for text pressed/selected state.
-	 * @param c the color.
+	 * @return 颜色。
 	 */		
 	public function getPressedColor():ASColor{
 		return pressedColor;
